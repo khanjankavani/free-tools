@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loan Eligibility Calculator | How Much Will a Bank Lend You</title>
+<meta name="description" content="Work out the loan amount a bank is likely to sanction based on your income, your existing EMIs and the tenure you want. Free and instant.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/loan-eligibility-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/loan-eligibility-calculator/">
+<meta property="og:title" content="Loan Eligibility Calculator">
+<meta property="og:description" content="Work out the loan amount a bank is likely to sanction based on your income, your existing EMIs and the tenure you want. Free and instant.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Loan Eligibility Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/loan-eligibility-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is FOIR?","acceptedAnswer":{"@type":"Answer","text":"The fixed obligation to income ratio, the share of your monthly income a bank will allow to go towards loan repayments. Most lenders work between 40 and 55 percent, with more allowed at higher income levels. Adjust the field above if you know your bank's figure."}},{"@type":"Question","name":"Does a co-applicant increase eligibility?","acceptedAnswer":{"@type":"Answer","text":"Usually yes. If your spouse or a parent has income and joins as co-applicant, most banks combine the incomes, which raises the eligible amount substantially. They also become jointly liable for the loan, so it is a shared commitment rather than a formality."}},{"@type":"Question","name":"Why is my sanctioned amount lower than this shows?","acceptedAnswer":{"@type":"Answer","text":"Common reasons: a credit score below the lender's threshold, income assessed on net rather than gross salary, variable pay excluded, a shorter tenure offered because of your age, or a loan to value cap on the specific property. This calculator gives an indication, not a sanction."}},{"@type":"Question","name":"Do credit card balances count as existing EMIs?","acceptedAnswer":{"@type":"Answer","text":"Banks typically count a percentage of your outstanding credit card balance, often around 5 percent, as a monthly obligation. Clearing card balances before applying can noticeably improve your position."}},{"@type":"Question","name":"Should I borrow the maximum I am eligible for?","acceptedAnswer":{"@type":"Answer","text":"Rarely. Eligibility is a lender's assessment of what you can survive, not what leaves you comfortable. Stamp duty, registration, furnishing and maintenance all sit outside the loan. Borrowing to the ceiling leaves nothing for the parts nobody quotes you."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Loan Eligibility Calculator</h1>
+    <p class="lead">Banks lend against your ability to repay, not against what you would like to borrow. This works backwards from your income to the loan amount a lender is likely to approve.</p>
+    <div class="hero-meta">
+      <span>FOIR based</span>
+      <span>Accounts for existing EMIs</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="inc">Net monthly income (₹)</label>
+            <input type="number" id="inc" value="100000" min="5000" step="5000">
+            <span class="hint">Take home pay after tax and deductions.</span>
+          </div>
+          <div class="field">
+            <label for="emi">Existing monthly EMIs (₹)</label>
+            <input type="number" id="emi" value="0" min="0" step="1000">
+            <span class="hint">Car loan, personal loan, credit card minimums.</span>
+          </div>
+          <div class="field">
+            <label for="foir">Share of income the bank allows (%)</label>
+            <input type="number" id="foir" value="50" min="20" max="75" step="5">
+            <span class="hint">Usually 40 to 55 percent. Higher earners are often allowed more.</span>
+          </div>
+          <div class="field">
+            <label for="r">Interest rate (% per year)</label>
+            <input type="number" id="r" value="8.75" min="1" max="30" step="0.05">
+          </div>
+          <div class="field">
+            <label for="y">Tenure (years)</label>
+            <input type="number" id="y" value="20" min="1" max="35" step="1">
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="amt">₹0</div>
+            <div class="cap">likely sanctioned amount</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span>EMI you can support</span><span id="ce">₹0</span></div>
+            <div class="row"><span>Already committed</span><span id="ex">₹0</span></div>
+            <div class="row"><span>Total interest over the term</span><span id="ti">₹0</span></div>
+            <div class="row"><span>Total repayment</span><span id="tr">₹0</span></div>
+            <div class="row"><span>Property value this supports at 80% LTV</span><span id="pv">₹0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>How a bank decides</h2>
+      <p>Lenders use a ratio usually called FOIR, the fixed obligation to income ratio. It is the share of your monthly income that may go towards servicing debt. Most banks sit between 40 and 55 percent, and they are more generous with higher incomes because someone earning ₹4,00,000 a month can spare 60 percent far more comfortably than someone earning ₹40,000 can spare 40.</p>
+      <div class="formula">EMI capacity = (income × FOIR) − existing EMIs<br>Loan amount = EMI capacity × [ (1 + r)<sup>n</sup> − 1 ] ÷ [ r × (1 + r)<sup>n</sup> ]</div>
+      <p>That second line is the EMI formula run backwards. Instead of asking what a loan costs per month, it asks what monthly payment buys.</p>
+
+      <h3>A worked example</h3>
+      <p>Take home ₹1,00,000 a month, no existing loans, a bank allowing 50 percent, 8.75 percent for 20 years. Your EMI capacity is ₹50,000. Working backwards, that supports a loan of roughly ₹56,58,000. At 80 percent loan to value, that is a property of about ₹70,72,000, with the rest coming from your own pocket.</p>
+      <p>Now add a car loan of ₹15,000 a month. Capacity drops to ₹35,000 and the eligible loan falls to roughly ₹39,61,000. One car loan cost you about ₹17,00,000 of home loan headroom. If a bigger house is the goal, clearing small loans first does more than negotiating the rate.</p>
+
+      <h2>What else the bank looks at</h2>
+      <ul>
+        <li><strong>Credit score.</strong> Below roughly 700 you may be declined outright or offered a materially worse rate. Check yours before applying, not after.</li>
+        <li><strong>Employment stability.</strong> Salaried applicants with a few years of continuous employment get the easiest treatment. Self employed applicants are usually assessed on two or three years of filed returns, and on declared profit rather than turnover.</li>
+        <li><strong>Age and remaining working life.</strong> The loan normally has to finish before you retire. At 45, a 30 year tenure is unlikely to be offered.</li>
+        <li><strong>Loan to value.</strong> For home loans, banks typically fund 75 to 90 percent of the property value depending on the amount. The rest is your down payment, and stamp duty and registration usually sit outside the loan entirely.</li>
+        <li><strong>The property itself.</strong> Title, approvals and the builder's standing all matter. A bank can approve you and still decline the specific property.</li>
+      </ul>
+
+      <h3>Eligible is not the same as sensible</h3>
+      <p>This calculator tells you what a bank will probably lend. It does not tell you what you should borrow. A ₹50,000 EMI on ₹1,00,000 of take home pay is arithmetically permitted and leaves half your income for everything else, including maintenance, property tax, insurance and the emergencies that arrive on their own schedule.</p>
+      <p>A useful test: could you still pay this EMI if your income dropped 20 percent for six months? If not, borrow less than you are offered. Run the <a href="/tools/emi-calculator/">EMI calculator</a> at a rate two percent higher than today's to see what a rate rise would do to a floating loan.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>What is FOIR?</summary>
+          <div><p>The fixed obligation to income ratio, the share of your monthly income a bank will allow to go towards loan repayments. Most lenders work between 40 and 55 percent, with more allowed at higher income levels. Adjust the field above if you know your bank's figure.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does a co-applicant increase eligibility?</summary>
+          <div><p>Usually yes. If your spouse or a parent has income and joins as co-applicant, most banks combine the incomes, which raises the eligible amount substantially. They also become jointly liable for the loan, so it is a shared commitment rather than a formality.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Why is my sanctioned amount lower than this shows?</summary>
+          <div><p>Common reasons: a credit score below the lender's threshold, income assessed on net rather than gross salary, variable pay excluded, a shorter tenure offered because of your age, or a loan to value cap on the specific property. This calculator gives an indication, not a sanction.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do credit card balances count as existing EMIs?</summary>
+          <div><p>Banks typically count a percentage of your outstanding credit card balance, often around 5 percent, as a monthly obligation. Clearing card balances before applying can noticeably improve your position.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Should I borrow the maximum I am eligible for?</summary>
+          <div><p>Rarely. Eligibility is a lender's assessment of what you can survive, not what leaves you comfortable. Stamp duty, registration, furnishing and maintenance all sit outside the loan. Borrowing to the ceiling leaves nothing for the parts nobody quotes you.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:30px">
+  <div class="wrap wrap-narrow">
+    <a href="/lifeos/" class="promo"><img src="/assets/lifeos/icon.png" alt="" width="52" height="52"><div><small>From the same maker · not an ad</small><strong>Planning around a loan?</strong><span class="t">Life OS keeps income, expenses, bills and reminders on your phone, not in someone's cloud. In testing now.</span></div><span class="go">See Life OS &rarr;</span></a>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/emi-calculator/" class="card tool-card">
+          <h3>EMI Calculator</h3>
+          <p>What the loan actually costs each month.</p>
+        </a>
+        <a href="/tools/income-tax-calculator/" class="card tool-card">
+          <h3>Income Tax</h3>
+          <p>Home loan interest is deductible in the old regime.</p>
+        </a>
+        <a href="/tools/fd-calculator/" class="card tool-card">
+          <h3>FD Calculator</h3>
+          <p>Where the down payment could sit meanwhile.</p>
+        </a>
+        <a href="/tools/percentage-calculator/" class="card tool-card">
+          <h3>Percentage Calculator</h3>
+          <p>General percentage arithmetic.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function inr(n){if(!isFinite(n))return '0';return Math.round(n).toLocaleString('en-IN');}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+
+function elig(){
+  var I=num('inc'), E=num('emi'), F=num('foir'), R=num('r'), Y=num('y');
+  var capacity=Math.max(0, I*F/100 - E);
+  var i=R/12/100, n=Math.round(Y*12), P;
+  if(i===0){ P=capacity*n; } else { var f=Math.pow(1+i,n); P=capacity*(f-1)/(i*f); }
+  var total=capacity*n;
+  document.getElementById('amt').textContent='₹'+inr(P);
+  document.getElementById('ce').textContent='₹'+inr(capacity);
+  document.getElementById('ex').textContent='₹'+inr(E);
+  document.getElementById('ti').textContent='₹'+inr(total-P);
+  document.getElementById('tr').textContent='₹'+inr(total);
+  document.getElementById('pv').textContent='₹'+inr(P/0.8);
+}
+['inc','emi','foir','r','y'].forEach(function(id){document.getElementById(id).addEventListener('input',elig);});
+elig();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

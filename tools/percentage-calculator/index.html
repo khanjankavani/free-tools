@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Percentage Calculator | Increase, Decrease and Difference</title>
+<meta name="description" content="Four calculations in one place. What is X percent of Y, X is what percent of Y, percentage increase or decrease, and the difference between two numbers.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/percentage-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/percentage-calculator/">
+<meta property="og:title" content="Percentage Calculator">
+<meta property="og:description" content="Four calculations in one place. What is X percent of Y, X is what percent of Y, percentage increase or decrease, and the difference between two numbers.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Percentage Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/percentage-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why divide by the old value for percentage increase?","acceptedAnswer":{"@type":"Answer","text":"Because the question is how much it grew relative to where it started. The starting point is the reference. Dividing by the new value answers a different question and always understates a rise."}},{"@type":"Question","name":"What is the difference between percentage change and percentage difference?","acceptedAnswer":{"@type":"Answer","text":"Percentage change has a clear before and after, so it divides by the original. Percentage difference compares two values where neither comes first, so it divides by their average. Use change for growth over time and difference for comparing two measurements."}},{"@type":"Question","name":"How do I remove a percentage that has already been added?","acceptedAnswer":{"@type":"Answer","text":"Divide, do not subtract. If a price includes 18 percent tax, divide by 1.18 to get the base. Subtracting 18 percent from the inclusive price gives a different and wrong answer. The GST calculator handles this specific case."}},{"@type":"Question","name":"Do two 10 percent discounts equal 20 percent off?","acceptedAnswer":{"@type":"Answer","text":"No. They come to 19 percent. \u20b9100 less 10 percent is \u20b990, less another 10 percent is \u20b981. Sequential percentages multiply, so 0.9 \u00d7 0.9 = 0.81."}},{"@type":"Question","name":"What is a percentage point?","acceptedAnswer":{"@type":"Answer","text":"The absolute gap between two percentages. Going from 8 percent to 9 percent is one percentage point, and also a 12.5 percent relative increase. The distinction matters most when discussing interest rates and margins."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Percentage Calculator</h1>
+    <p class="lead">Four different percentage questions, each with its own box. No need to remember which way round the division goes.</p>
+    <div class="hero-meta">
+      <span>Four calculations</span>
+      <span>Updates as you type</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="field"><label>What is <input type="number" id="a1" value="15" style="width:90px;display:inline-block"> % of <input type="number" id="a2" value="2400" style="width:130px;display:inline-block"> ?</label>
+        <div class="result" style="margin-top:12px"><div class="big" id="r1">0</div></div></div>
+    </div>
+    <div class="calc">
+      <div class="field"><label><input type="number" id="b1" value="45" style="width:110px;display:inline-block"> is what percent of <input type="number" id="b2" value="180" style="width:110px;display:inline-block"> ?</label>
+        <div class="result" style="margin-top:12px"><div class="big" id="r2">0</div></div></div>
+    </div>
+    <div class="calc">
+      <div class="field"><label>From <input type="number" id="c1" value="50000" style="width:120px;display:inline-block"> to <input type="number" id="c2" value="62500" style="width:120px;display:inline-block"> is what change?</label>
+        <div class="result" style="margin-top:12px"><div class="big" id="r3">0</div><div class="cap" id="c3">increase</div></div></div>
+    </div>
+    <div class="calc">
+      <div class="field"><label>Percentage difference between <input type="number" id="d1" value="120" style="width:100px;display:inline-block"> and <input type="number" id="d2" value="150" style="width:100px;display:inline-block"></label>
+        <div class="result" style="margin-top:12px"><div class="big" id="r4">0</div><div class="cap">relative to their average</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>The four questions, and why they get confused</h2>
+      <p>Almost every percentage mistake comes from using one formula when the question needed another. Here they are separated.</p>
+
+      <h3>1. What is X percent of Y</h3>
+      <div class="formula">result = X ÷ 100 × Y</div>
+      <p>15 percent of 2,400 is 360. This is the one people get right.</p>
+
+      <h3>2. X is what percent of Y</h3>
+      <div class="formula">result = X ÷ Y × 100</div>
+      <p>45 out of 180 is 25 percent. The trap is putting the numbers the wrong way round, which gives 400 percent and should immediately look wrong.</p>
+
+      <h3>3. Percentage increase or decrease</h3>
+      <div class="formula">change = (new − old) ÷ old × 100</div>
+      <p>From 50,000 to 62,500 is a 25 percent increase. Note the divisor is the <strong>old</strong> value, always. Dividing by the new value is the single most common percentage error in business reporting.</p>
+
+      <h3>4. Percentage difference</h3>
+      <div class="formula">difference = |X − Y| ÷ ((X + Y) ÷ 2) × 100</div>
+      <p>This one is different and often misused. It compares two values where neither is the starting point, so it divides by their average. Between 120 and 150 the percentage difference is about 22.2 percent, whereas the percentage <em>increase</em> from 120 to 150 is 25 percent. Different questions, different answers, and it matters which one you quote.</p>
+
+      <h2>The asymmetry that catches everyone</h2>
+      <p>A 50 percent fall needs a 100 percent rise to get back to where it started. If a share drops from ₹100 to ₹50, that is down 50 percent. Going from ₹50 back to ₹100 is up 100 percent. The two are not mirror images, because the base changed.</p>
+      <p>This is why a stock that falls 20 percent and then rises 20 percent is not back to level. ₹100 becomes ₹80, and 20 percent of ₹80 is ₹16, so you end at ₹96. You are down 4 percent after two apparently equal moves.</p>
+
+      <h3>Percent and percentage point</h3>
+      <p>If an interest rate moves from 8 percent to 9 percent, that is a rise of one percentage <em>point</em>, and a rise of 12.5 percent. Both statements are correct and they sound wildly different. Financial reporting uses percentage points for exactly this reason. When someone quotes a change in a rate, check which they mean.</p>
+
+      <h3>Discounts stacked on discounts</h3>
+      <p>Two successive 20 percent discounts are not 40 percent off. ₹1,000 less 20 percent is ₹800, less another 20 percent is ₹640, which is 36 percent off the original. Percentages applied one after another multiply rather than add.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Why divide by the old value for percentage increase?</summary>
+          <div><p>Because the question is how much it grew relative to where it started. The starting point is the reference. Dividing by the new value answers a different question and always understates a rise.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What is the difference between percentage change and percentage difference?</summary>
+          <div><p>Percentage change has a clear before and after, so it divides by the original. Percentage difference compares two values where neither comes first, so it divides by their average. Use change for growth over time and difference for comparing two measurements.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How do I remove a percentage that has already been added?</summary>
+          <div><p>Divide, do not subtract. If a price includes 18 percent tax, divide by 1.18 to get the base. Subtracting 18 percent from the inclusive price gives a different and wrong answer. The <a href='/tools/gst-calculator/'>GST calculator</a> handles this specific case.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do two 10 percent discounts equal 20 percent off?</summary>
+          <div><p>No. They come to 19 percent. ₹100 less 10 percent is ₹90, less another 10 percent is ₹81. Sequential percentages multiply, so 0.9 × 0.9 = 0.81.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What is a percentage point?</summary>
+          <div><p>The absolute gap between two percentages. Going from 8 percent to 9 percent is one percentage point, and also a 12.5 percent relative increase. The distinction matters most when discussing interest rates and margins.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/gst-calculator/" class="card tool-card">
+          <h3>GST Calculator</h3>
+          <p>Add or remove GST at Indian rates.</p>
+        </a>
+        <a href="/tools/emi-calculator/" class="card tool-card">
+          <h3>EMI Calculator</h3>
+          <p>Loan instalments and total interest.</p>
+        </a>
+        <a href="/tools/unit-converter/" class="card tool-card">
+          <h3>Unit Converter</h3>
+          <p>Length, weight, temperature and more.</p>
+        </a>
+        <a href="/tools/date-calculator/" class="card tool-card">
+          <h3>Date Calculator</h3>
+          <p>Days between dates and date arithmetic.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+function calc(){
+  var v=num('a1')*num('a2')/100;
+  el('r1').textContent=(Math.round(v*100)/100).toLocaleString('en-IN');
+  var p=num('b2')!==0?num('b1')/num('b2')*100:0;
+  el('r2').textContent=(Math.round(p*100)/100)+'%';
+  var f=num('c1'), t=num('c2'), ch=f!==0?(t-f)/Math.abs(f)*100:0;
+  el('r3').textContent=(Math.round(Math.abs(ch)*100)/100)+'%';
+  el('c3').textContent = ch>=0?'increase':'decrease';
+  var x=num('d1'), y=num('d2'), avg=(Math.abs(x)+Math.abs(y))/2;
+  var d=avg!==0?Math.abs(x-y)/avg*100:0;
+  el('r4').textContent=(Math.round(d*100)/100)+'%';
+}
+on(['a1','a2','b1','b2','c1','c2','d1','d2'],calc);
+calc();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Converter | Sentence Case, Title Case, Upper and Lower</title>
+<meta name="description" content="Convert text between sentence case, title case, upper case, lower case, and formats like camelCase, snake_case and kebab-case. Instant, nothing uploaded.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/case-converter/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/case-converter/">
+<meta property="og:title" content="Case Converter">
+<meta property="og:description" content="Convert text between sentence case, title case, upper case, lower case, and formats like camelCase, snake_case and kebab-case. Instant, nothing uploaded.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Case Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/case-converter/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between title case and capitalising every word?","acceptedAnswer":{"@type":"Answer","text":"Title case leaves small words such as a, the, of and to in lower case unless they begin the title. Capitalising every word does exactly that, with no exceptions. Both are offered above because publications differ on which they use."}},{"@type":"Question","name":"Which case should I use for web page URLs?","acceptedAnswer":{"@type":"Answer","text":"kebab-case, all lower with hyphens. Search engines read hyphens as word separators reliably. Avoid upper case in URLs entirely, since some servers treat paths as case sensitive and it becomes a source of broken links."}},{"@type":"Question","name":"Does converting to upper case and back restore my text?","acceptedAnswer":{"@type":"Answer","text":"No. Case information is lost the moment you go to upper case. Brand names such as iPhone and eBay, acronyms, and proper nouns will not come back correctly. Always convert from your original."}},{"@type":"Question","name":"Is my text sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser and nothing is transmitted or stored."}},{"@type":"Question","name":"Does it handle text in other languages?","acceptedAnswer":{"@type":"Answer","text":"Upper and lower case conversion uses the browser's own rules and works for most scripts that have case. Scripts without case, including Devanagari and Gujarati, are passed through unchanged, which is correct. The programming formats assume Latin characters."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Case Converter</h1>
+    <p class="lead">Paste text once and get every case format at once. Includes proper title case that leaves the small words alone, and the programming formats.</p>
+    <div class="hero-meta">
+      <span>Nine formats</span>
+      <span>Real title case rules</span>
+      <span>Nothing uploaded</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="field">
+        <label for="src">Your text</label>
+        <textarea id="src" rows="4" placeholder="Paste your text here.">the quick brown fox jumps over the lazy dog</textarea>
+      </div>
+      <div class="breakdown" id="outs"></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>The formats, and when each is right</h2>
+
+      <h3>Sentence case</h3>
+      <p>First letter of each sentence capitalised, everything else left alone. This is standard for body text, and increasingly for headings too. It reads faster than title case because it matches how we read prose everywhere else.</p>
+
+      <h3>Title case</h3>
+      <p>Principal words capitalised, small words left lower unless they start the title. So "The Quick Brown Fox Jumps over the Lazy Dog", with "over" and the second "the" staying lower. Most converters get this wrong by capitalising every word, which is a different format entirely and is offered separately above.</p>
+      <p>Style guides disagree on the details, particularly about prepositions of four or more letters. This tool keeps the common short words lower, which matches the general convention closely enough for headlines and headings.</p>
+
+      <h3>Upper case</h3>
+      <p>Use sparingly. Fully capitalised text is measurably slower to read, because the word shape that helps us recognise words at a glance disappears when every letter is the same height. Fine for a short label, poor for a sentence, and it reads as shouting in a message.</p>
+
+      <h3>The programming formats</h3>
+      <ul>
+        <li><strong>camelCase</strong>, first word lower and each subsequent word capitalised. JavaScript variables and Java methods.</li>
+        <li><strong>snake_case</strong>, all lower with underscores. Python variables, database column names.</li>
+        <li><strong>kebab-case</strong>, all lower with hyphens. URLs, CSS class names, file names for the web.</li>
+      </ul>
+      <p>For web pages, kebab-case is the one that matters. Search engines treat hyphens as word separators and underscores less reliably, so a URL ending in emi-calculator is read as two words while emi_calculator may not be.</p>
+
+      <h2>Why case matters more than it seems</h2>
+      <p>Inconsistent capitalisation across a website looks careless in a way readers notice without being able to name. Pick one convention for headings, one for buttons and one for navigation, and apply them everywhere.</p>
+      <p>One practical note: converting to upper case and back again loses information permanently. "iPhone" becomes "IPHONE" becomes "Iphone". Always convert from your original text rather than from an already converted version.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>What is the difference between title case and capitalising every word?</summary>
+          <div><p>Title case leaves small words such as a, the, of and to in lower case unless they begin the title. Capitalising every word does exactly that, with no exceptions. Both are offered above because publications differ on which they use.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Which case should I use for web page URLs?</summary>
+          <div><p>kebab-case, all lower with hyphens. Search engines read hyphens as word separators reliably. Avoid upper case in URLs entirely, since some servers treat paths as case sensitive and it becomes a source of broken links.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does converting to upper case and back restore my text?</summary>
+          <div><p>No. Case information is lost the moment you go to upper case. Brand names such as iPhone and eBay, acronyms, and proper nouns will not come back correctly. Always convert from your original.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is my text sent to a server?</summary>
+          <div><p>No. Everything runs in your browser and nothing is transmitted or stored.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does it handle text in other languages?</summary>
+          <div><p>Upper and lower case conversion uses the browser's own rules and works for most scripts that have case. Scripts without case, including Devanagari and Gujarati, are passed through unchanged, which is correct. The programming formats assume Latin characters.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/word-counter/" class="card tool-card">
+          <h3>Word Counter</h3>
+          <p>Words, characters and reading time.</p>
+        </a>
+        <a href="/tools/typing-speed-test/" class="card tool-card">
+          <h3>Typing Speed Test</h3>
+          <p>Words per minute and accuracy.</p>
+        </a>
+        <a href="/tools/password-generator/" class="card tool-card">
+          <h3>Password Generator</h3>
+          <p>Strong passwords made on your device.</p>
+        </a>
+        <a href="/tools/qr-code-generator/" class="card tool-card">
+          <h3>QR Code Generator</h3>
+          <p>Turn a link into a QR code.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+var SMALL={'a':1,'an':1,'and':1,'as':1,'at':1,'but':1,'by':1,'for':1,'if':1,'in':1,'nor':1,
+ 'of':1,'on':1,'or':1,'per':1,'the':1,'to':1,'via':1,'vs':1,'with':1,'from':1,'into':1,'over':1};
+function sentenceCase(t){
+  return t.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g,function(m){return m.toUpperCase();});
+}
+function titleCase(t){
+  var w=t.toLowerCase().split(/(\s+)/);
+  var idx=0;
+  return w.map(function(x){
+    if(!x.trim()) return x;
+    idx++;
+    var isEdge = (idx===1);
+    if(!isEdge && SMALL[x.replace(/[^a-z]/g,'')]) return x;
+    return x.charAt(0).toUpperCase()+x.slice(1);
+  }).join('');
+}
+function words(t){
+  return t.replace(/[^A-Za-z0-9]+/g,' ').trim().split(/\s+/).filter(Boolean);
+}
+var FORMATS=[
+  ['Sentence case', function(t){return sentenceCase(t);}],
+  ['Title Case', function(t){return titleCase(t);}],
+  ['UPPER CASE', function(t){return t.toUpperCase();}],
+  ['lower case', function(t){return t.toLowerCase();}],
+  ['Capitalise Every Word', function(t){return t.toLowerCase().replace(/\b\w/g,function(m){return m.toUpperCase();});}],
+  ['aLtErNaTiNg', function(t){var i=0;return t.split('').map(function(c){if(!/[a-z]/i.test(c))return c;return (i++%2)?c.toUpperCase():c.toLowerCase();}).join('');}],
+  ['camelCase', function(t){var w=words(t);return w.map(function(x,i){x=x.toLowerCase();return i?x.charAt(0).toUpperCase()+x.slice(1):x;}).join('');}],
+  ['snake_case', function(t){return words(t).map(function(x){return x.toLowerCase();}).join('_');}],
+  ['kebab-case', function(t){return words(t).map(function(x){return x.toLowerCase();}).join('-');}]
+];
+function render(){
+  var t=el('src').value, h='';
+  FORMATS.forEach(function(f,i){
+    var v=f[1](t);
+    h+='<div class="row" style="align-items:center;gap:14px">'
+      +'<span style="flex:0 0 168px">'+f[0]+'</span>'
+      +'<span id="o'+i+'" style="flex:1;text-align:left;word-break:break-word;font-family:var(--sans)">'+
+        v.replace(/</g,'&lt;')+'</span>'
+      +'<button class="btn btn-ghost btn-sm" data-i="'+i+'" style="flex:0 0 auto">Copy</button></div>';
+  });
+  el('outs').innerHTML=h;
+  Array.prototype.forEach.call(el('outs').querySelectorAll('button'),function(b){
+    b.addEventListener('click',function(){
+      var v=FORMATS[+b.dataset.i][1](el('src').value);
+      navigator.clipboard.writeText(v).then(function(){
+        var o=b.textContent; b.textContent='Copied'; setTimeout(function(){b.textContent=o;},1200);
+      });
+    });
+  });
+}
+el('src').addEventListener('input',render);
+render();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

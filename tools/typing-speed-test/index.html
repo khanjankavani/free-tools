@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typing Speed Test | Words Per Minute and Accuracy</title>
+<meta name="description" content="Test your typing speed over one minute and get words per minute, accuracy and adjusted net speed. Works on desktop, nothing stored.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/typing-speed-test/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/typing-speed-test/">
+<meta property="og:title" content="Typing Speed Test">
+<meta property="og:description" content="Test your typing speed over one minute and get words per minute, accuracy and adjusted net speed. Works on desktop, nothing stored.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Typing Speed Test","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/typing-speed-test/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is a word counted as five characters?","acceptedAnswer":{"@type":"Answer","text":"It is the standard convention in typing measurement, and it exists so that text with long words is not scored unfairly against text with short ones. Spaces and punctuation are included in the count."}},{"@type":"Question","name":"What is the difference between gross and net WPM?","acceptedAnswer":{"@type":"Answer","text":"Gross counts everything you typed. Net counts only the characters that were correct. Net is the meaningful figure, because incorrect text has to be found and fixed, which costs more time than it saved."}},{"@type":"Question","name":"What is a good typing speed?","acceptedAnswer":{"@type":"Answer","text":"Around 40 words per minute with high accuracy covers most office requirements. 60 to 70 is comfortably fast. Beyond about 80, typing usually stops being what limits your output."}},{"@type":"Question","name":"Does this work on a phone?","acceptedAnswer":{"@type":"Answer","text":"It will run, but the results are not comparable to a physical keyboard, and touch typing measurement really assumes one. Use a laptop or desktop for a figure that means anything."}},{"@type":"Question","name":"Is my typing recorded?","acceptedAnswer":{"@type":"Answer","text":"No. Everything happens in your browser. Nothing is transmitted or stored, and refreshing the page clears it entirely."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Typing Speed Test</h1>
+    <p class="lead">One minute, real sentences. You get gross speed, accuracy and the net figure that actually counts, because typing fast and typing wrong is not typing fast.</p>
+    <div class="hero-meta">
+      <span>60 seconds</span>
+      <span>Net WPM shown</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div id="target" style="font-size:1.12rem;line-height:1.9;padding:20px;background:var(--bg-sunk);border-radius:12px;margin-bottom:18px;min-height:110px"></div>
+      <div class="field">
+        <label for="inp">Type here. The timer starts on your first keystroke.</label>
+        <textarea id="inp" rows="4" placeholder="Start typing to begin." spellcheck="false" autocomplete="off"></textarea>
+      </div>
+      <div class="grid grid-4" style="gap:14px;margin-top:6px">
+        <div class="result"><div class="big" id="wpm" style="font-size:1.7rem">0</div><div class="cap">net WPM</div></div>
+        <div class="result"><div class="big" id="gross" style="font-size:1.7rem">0</div><div class="cap">gross WPM</div></div>
+        <div class="result"><div class="big" id="acc" style="font-size:1.7rem">100%</div><div class="cap">accuracy</div></div>
+        <div class="result"><div class="big" id="time" style="font-size:1.7rem">60</div><div class="cap">seconds left</div></div>
+      </div>
+      <div class="btn-row" style="margin-top:20px"><button class="btn btn-ghost" id="reset">Reset</button></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>How typing speed is measured</h2>
+      <p>A "word" in typing measurement is five characters, including spaces and punctuation. That convention exists so that typing "extraordinary" and typing "cat dog" are scored fairly against each other, rather than rewarding whoever happens to get short words.</p>
+      <div class="formula">Gross WPM = (characters typed ÷ 5) ÷ minutes elapsed<br>Net WPM = (correct characters ÷ 5) ÷ minutes elapsed</div>
+      <p>Net is the number that matters. Typing at 90 words per minute with 80 percent accuracy is worse than 65 with 99 percent, because every error has to be found and fixed, and finding it costs more than the keystroke saved.</p>
+
+      <h3>What the numbers mean</h3>
+      <table>
+        <tr><th>Net WPM</th><th>Where that sits</th></tr>
+        <tr><td>Under 25</td><td>Hunt and peck, looking at the keyboard</td></tr>
+        <tr><td>30 to 40</td><td>Average for someone who types regularly</td></tr>
+        <tr><td>50 to 60</td><td>Comfortable touch typing, typical office proficiency</td></tr>
+        <tr><td>70 to 90</td><td>Fast. Enough that typing stops being the bottleneck.</td></tr>
+        <tr><td>Above 100</td><td>Genuinely quick, usually years of touch typing</td></tr>
+      </table>
+      <p>Most professional roles that specify a requirement ask for somewhere around 40 to 50 with high accuracy. Speed beyond about 80 rarely changes how much work you get done, because thinking becomes the limit rather than typing.</p>
+
+      <h2>Getting faster, in the order that works</h2>
+      <ol>
+        <li><strong>Stop looking at the keyboard.</strong> This is the whole game. It will be slower and more frustrating for about two weeks, and then it will be permanently faster. Every hour spent looking down is an hour of practice that does not compound.</li>
+        <li><strong>Learn the home row and stay anchored to it.</strong> Index fingers on F and J, which have the raised bumps for exactly this reason. Each finger owns its own columns.</li>
+        <li><strong>Slow down until you are accurate.</strong> Accuracy first, always. Speed built on top of sloppy habits plateaus early, and the errors are much harder to unlearn than to avoid.</li>
+        <li><strong>Practise real sentences, not random words.</strong> Common letter pairs and word endings are what you actually type, and drilling them is what transfers.</li>
+        <li><strong>Fifteen minutes a day beats two hours on Sunday.</strong> Motor skills consolidate with sleep between sessions.</li>
+      </ol>
+
+      <h3>Posture, briefly</h3>
+      <p>Wrists floating rather than resting on the desk edge, forearms roughly level, shoulders down, screen at eye height. Typing quickly with bad wrist position for years is how people acquire injuries that end up limiting them far more than a slow typing speed ever would.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Why is a word counted as five characters?</summary>
+          <div><p>It is the standard convention in typing measurement, and it exists so that text with long words is not scored unfairly against text with short ones. Spaces and punctuation are included in the count.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What is the difference between gross and net WPM?</summary>
+          <div><p>Gross counts everything you typed. Net counts only the characters that were correct. Net is the meaningful figure, because incorrect text has to be found and fixed, which costs more time than it saved.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What is a good typing speed?</summary>
+          <div><p>Around 40 words per minute with high accuracy covers most office requirements. 60 to 70 is comfortably fast. Beyond about 80, typing usually stops being what limits your output.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does this work on a phone?</summary>
+          <div><p>It will run, but the results are not comparable to a physical keyboard, and touch typing measurement really assumes one. Use a laptop or desktop for a figure that means anything.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is my typing recorded?</summary>
+          <div><p>No. Everything happens in your browser. Nothing is transmitted or stored, and refreshing the page clears it entirely.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/word-counter/" class="card tool-card">
+          <h3>Word Counter</h3>
+          <p>Words, characters and reading time.</p>
+        </a>
+        <a href="/tools/case-converter/" class="card tool-card">
+          <h3>Case Converter</h3>
+          <p>Change text between case formats.</p>
+        </a>
+        <a href="/tools/password-generator/" class="card tool-card">
+          <h3>Password Generator</h3>
+          <p>Strong passwords made on your device.</p>
+        </a>
+        <a href="/tools/age-calculator/" class="card tool-card">
+          <h3>Age Calculator</h3>
+          <p>Exact age in years, months and days.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+var TEXTS=[
+ "The best way to understand a system is to build a small version of it yourself. Reading about it will only take you so far, because the difficulties never appear in the description. They appear the moment you have to make a decision that the description quietly skipped over.",
+ "A tool that saves you ten minutes a day saves you more than sixty hours a year. Most people will not pay for it, because the ten minutes never feels like a cost. It feels like part of the job, which is exactly why it survives so long without anyone questioning it.",
+ "Good software is mostly good decisions made early and stuck to. The code is the easy part. Working out what should exist, and what should not, is where the actual work sits, and no amount of typing quickly will substitute for getting that right.",
+ "Every business runs on a spreadsheet that started as a quick fix and became load bearing without anyone deciding it should. It works until it does not, and the day it stops working is never a convenient one."
+];
+var text='', started=0, timer=null, running=false, LIMIT=60;
+function pick(){
+  text=TEXTS[Math.floor(Math.random()*TEXTS.length)];
+  render('');
+}
+function render(typed){
+  var h='';
+  for(var i=0;i<text.length;i++){
+    var c=text.charAt(i).replace(/</g,'&lt;');
+    if(i<typed.length){
+      h += typed.charAt(i)===text.charAt(i)
+        ? '<span style="color:var(--good)">'+c+'</span>'
+        : '<span style="color:#fff;background:var(--bad);border-radius:2px">'+c+'</span>';
+    } else if(i===typed.length){
+      h += '<span style="border-left:2px solid var(--accent)">'+c+'</span>';
+    } else h += '<span style="color:var(--ink-faint)">'+c+'</span>';
+  }
+  el('target').innerHTML=h;
+}
+function stats(){
+  var typed=el('inp').value;
+  var elapsed=(Date.now()-started)/1000;
+  if(elapsed<=0) return;
+  var correct=0;
+  for(var i=0;i<typed.length;i++) if(typed.charAt(i)===text.charAt(i)) correct++;
+  var acc = typed.length? correct/typed.length*100 : 100;
+  var gross = (typed.length/5)/(elapsed/60);
+  var net = (correct/5)/(elapsed/60);
+  el('gross').textContent=Math.round(gross);
+  el('wpm').textContent=Math.round(Math.max(0,net));
+  el('acc').textContent=acc.toFixed(0)+'%';
+}
+function tick(){
+  var left=Math.max(0, LIMIT-Math.floor((Date.now()-started)/1000));
+  el('time').textContent=left;
+  stats();
+  if(left<=0) stop();
+}
+function stop(){
+  running=false; clearInterval(timer); el('inp').disabled=true;
+}
+function reset(){
+  clearInterval(timer); running=false; started=0;
+  el('inp').disabled=false; el('inp').value='';
+  el('time').textContent=LIMIT; el('wpm').textContent='0';
+  el('gross').textContent='0'; el('acc').textContent='100%';
+  pick(); el('inp').focus();
+}
+el('inp').addEventListener('input',function(){
+  if(!running){ running=true; started=Date.now(); timer=setInterval(tick,200); }
+  render(el('inp').value);
+  stats();
+  if(el('inp').value.length>=text.length) stop();
+});
+el('reset').addEventListener('click',reset);
+pick();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

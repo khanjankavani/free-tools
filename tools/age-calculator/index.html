@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Age Calculator | Exact Age in Years, Months and Days</title>
+<meta name="description" content="Work out an exact age in years, months and days from a date of birth, plus total days lived and the countdown to the next birthday.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/age-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/age-calculator/">
+<meta property="og:title" content="Age Calculator">
+<meta property="og:description" content="Work out an exact age in years, months and days from a date of birth, plus total days lived and the countdown to the next birthday.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Age Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/age-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this handle leap years correctly?","acceptedAnswer":{"@type":"Answer","text":"Yes. The total days figure is derived from actual calendar dates rather than multiplying by 365, so every leap day in the period is included."}},{"@type":"Question","name":"What about someone born on 29 February?","acceptedAnswer":{"@type":"Answer","text":"The calculator computes the exact elapsed time either way. For the next birthday in a non leap year, most systems and most legal rules in practice treat 1 March as the effective date, though the precise convention varies by purpose."}},{"@type":"Question","name":"Can I calculate age at a past date?","acceptedAnswer":{"@type":"Answer","text":"Yes. Change the second field from today to any date. This is the usual way to check what someone's age was on a scheme's cut off date or at the time of an event."}},{"@type":"Question","name":"Why does my age in months not equal years times twelve?","acceptedAnswer":{"@type":"Answer","text":"Total months counts only completed months, so the leftover days are dropped. Someone who is 30 years and 5 months and 20 days has 365 completed months, not 365 and a bit."}},{"@type":"Question","name":"Is my date of birth stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs inside your browser and nothing is transmitted. Close the tab and it is gone."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Age Calculator</h1>
+    <p class="lead">Put in a date of birth and get the exact age, not a rounded one. Years, months and days, plus a few totals that are oddly satisfying to look at.</p>
+    <div class="hero-meta">
+      <span>Handles leap years</span>
+      <span>Next birthday countdown</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="dob">Date of birth</label>
+            <input type="date" id="dob" value="1995-06-15">
+          </div>
+          <div class="field">
+            <label for="ason">Calculate age as on</label>
+            <input type="date" id="ason">
+            <span class="hint">Defaults to today. Change it to work out an age at any past or future date.</span>
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="age">0</div>
+            <div class="cap">years, months and days</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span>Total months</span><span id="tm">0</span></div>
+            <div class="row"><span>Total weeks</span><span id="tw">0</span></div>
+            <div class="row"><span>Total days</span><span id="td">0</span></div>
+            <div class="row"><span>Total hours</span><span id="th">0</span></div>
+            <div class="row"><span>Day of the week born</span><span id="dw">-</span></div>
+            <div class="row"><span>Next birthday</span><span id="nb">-</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>Why age arithmetic is fiddlier than it looks</h2>
+      <p>Subtracting two years gives you a number that is wrong roughly half the time. Someone born in December 1995, measured in March 2026, is 30 by subtraction and 30 years and 3 months in reality, but someone born in December 1995 measured in October 2026 is 31 by subtraction and only 30 years and 10 months in fact. The birthday has not happened yet.</p>
+      <p>The correct method works down the units. Compare days first, borrowing from months if the day of the month has not been reached. Then compare months, borrowing from years if needed. Only then is the year count correct. That borrowing step is what this calculator does, and it is what most quick mental estimates skip.</p>
+
+      <h3>Leap years</h3>
+      <p>A year is a leap year if it divides by 4, except century years, which must divide by 400. So 2000 was a leap year and 1900 was not. This matters for the total days figure, which counts actual elapsed days rather than assuming 365 per year.</p>
+      <p>People born on 29 February have a birthday in only about one year in four. In most legal contexts in non leap years the birthday is treated as 1 March, though the specific rule varies by jurisdiction and by the purpose being served.</p>
+
+      <h2>Age at a date other than today</h2>
+      <p>The second field is more useful than it looks. Set it to a date in the past to answer how old someone was at an event. Set it to a date in the future to check eligibility.</p>
+      <p>That is the common practical use in India: confirming whether someone will be 18 on polling day, 21 for a particular licence, 60 for senior citizen benefits, or the specific age a scheme or examination requires on a stated cut off date. Cut off dates in Indian admissions are usually fixed, so being a week late can matter, and eyeballing it from a birth year is exactly how people get it wrong.</p>
+
+      <h3>What the totals mean</h3>
+      <p>Total days is calculated from the actual calendar, including every leap day. Total months counts completed months only, so it ignores the leftover days. Total weeks is total days divided by seven and rounded down. None of these are approximations from an average year length.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Does this handle leap years correctly?</summary>
+          <div><p>Yes. The total days figure is derived from actual calendar dates rather than multiplying by 365, so every leap day in the period is included.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What about someone born on 29 February?</summary>
+          <div><p>The calculator computes the exact elapsed time either way. For the next birthday in a non leap year, most systems and most legal rules in practice treat 1 March as the effective date, though the precise convention varies by purpose.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I calculate age at a past date?</summary>
+          <div><p>Yes. Change the second field from today to any date. This is the usual way to check what someone's age was on a scheme's cut off date or at the time of an event.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Why does my age in months not equal years times twelve?</summary>
+          <div><p>Total months counts only completed months, so the leftover days are dropped. Someone who is 30 years and 5 months and 20 days has 365 completed months, not 365 and a bit.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is my date of birth stored anywhere?</summary>
+          <div><p>No. Everything runs inside your browser and nothing is transmitted. Close the tab and it is gone.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/date-calculator/" class="card tool-card">
+          <h3>Date Calculator</h3>
+          <p>Days between dates and date arithmetic.</p>
+        </a>
+        <a href="/tools/bmi-calculator/" class="card tool-card">
+          <h3>BMI Calculator</h3>
+          <p>Body mass index with the healthy range marked.</p>
+        </a>
+        <a href="/tools/percentage-calculator/" class="card tool-card">
+          <h3>Percentage Calculator</h3>
+          <p>General percentage arithmetic.</p>
+        </a>
+        <a href="/tools/unit-converter/" class="card tool-card">
+          <h3>Unit Converter</h3>
+          <p>Length, weight, temperature and area.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+(function(){var t=new Date();el('ason').value=t.toISOString().slice(0,10);})();
+function age(){
+  var d=new Date(el('dob').value), a=new Date(el('ason').value);
+  if(isNaN(d)||isNaN(a)||a<d){el('age').textContent='0';return;}
+  var y=a.getFullYear()-d.getFullYear();
+  var m=a.getMonth()-d.getMonth();
+  var dd=a.getDate()-d.getDate();
+  if(dd<0){ m--; dd += new Date(a.getFullYear(), a.getMonth(), 0).getDate(); }
+  if(m<0){ y--; m+=12; }
+  el('age').textContent=y+'y '+m+'m '+dd+'d';
+  var days=Math.floor((a-d)/86400000);
+  el('tm').textContent=(y*12+m).toLocaleString('en-IN');
+  el('tw').textContent=Math.floor(days/7).toLocaleString('en-IN');
+  el('td').textContent=days.toLocaleString('en-IN');
+  el('th').textContent=(days*24).toLocaleString('en-IN');
+  var names=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  el('dw').textContent=names[d.getDay()];
+  var nb=new Date(a.getFullYear(), d.getMonth(), d.getDate());
+  if(nb<a) nb=new Date(a.getFullYear()+1, d.getMonth(), d.getDate());
+  var left=Math.ceil((nb-a)/86400000);
+  el('nb').textContent = left===0?'today':(left+' days');
+}
+on(['dob','ason'],age);
+age();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

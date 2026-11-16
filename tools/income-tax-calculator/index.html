@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Income Tax Calculator FY 2026-27 | New vs Old Regime</title>
+<meta name="description" content="Compare your income tax under the new and old regimes for FY 2026-27, including standard deduction, section 87A rebate, surcharge and cess. Free and instant.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/income-tax-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/income-tax-calculator/">
+<meta property="og:title" content="Income Tax Calculator">
+<meta property="og:description" content="Compare your income tax under the new and old regimes for FY 2026-27, including standard deduction, section 87A rebate, surcharge and cess. Free and instant.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Income Tax Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/income-tax-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which regime should I pick?","acceptedAnswer":{"@type":"Answer","text":"Whichever costs less, which the calculator above tells you in rupees. As a rough guide, the new regime usually wins for people with few deductions, and the old regime usually wins once your total deductions get large, typically because of a home loan and a full 80C."}},{"@type":"Question","name":"Can I switch between regimes?","acceptedAnswer":{"@type":"Answer","text":"Salaried people without business income can choose afresh each year at the time of filing. If you have business or professional income the choice is far more restricted, and once you move out of the old regime you may not be able to return freely. Confirm your specific position before deciding."}},{"@type":"Question","name":"Is the standard deduction available in the new regime?","acceptedAnswer":{"@type":"Answer","text":"Yes, \u20b975,000 for salaried people and pensioners. In the old regime it is \u20b950,000. It is applied automatically above when you select salaried."}},{"@type":"Question","name":"Why does someone earning \u20b912,75,000 pay no tax?","acceptedAnswer":{"@type":"Answer","text":"The \u20b975,000 standard deduction brings taxable income to \u20b912,00,000, and the section 87A rebate wipes out the tax at that level. Earn a rupee more and marginal relief prevents the tax jumping abruptly, so the tax rises gradually rather than all at once."}},{"@type":"Question","name":"Does this include cess and surcharge?","acceptedAnswer":{"@type":"Answer","text":"Yes. The 4 percent health and education cess is applied to both regimes, and surcharge is applied at the standard thresholds. Marginal relief on surcharge is not modelled, so figures at the very top of the range are approximate."}},{"@type":"Question","name":"Are these rates definitely current?","acceptedAnswer":{"@type":"Answer","text":"They are the FY 2026-27 rates, which Budget 2026 carried forward unchanged from Budget 2025. Tax rules do change, so before you file, confirm against the Income Tax Department's own site or your accountant. Nothing here is tax advice."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Income Tax Calculator</h1>
+    <p class="lead">Enter your income and your deductions. You get the tax under both regimes side by side, so you can see which one leaves you better off rather than guessing.</p>
+    <div class="hero-meta">
+      <span>FY 2026-27, AY 2027-28</span>
+      <span>Both regimes compared</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="inc">Gross annual income (₹)</label>
+            <input type="number" id="inc" value="1500000" min="0" step="10000">
+          </div>
+          <div class="field">
+            <label for="sal">Income type</label>
+            <select id="sal">
+              <option value="1">Salaried or pensioner</option>
+              <option value="0">Business or professional</option>
+            </select>
+            <span class="hint">Salaried and pensioners get the standard deduction in both regimes.</span>
+          </div>
+          <div class="field">
+            <label for="ded">Old regime deductions (₹)</label>
+            <input type="number" id="ded" value="150000" min="0" step="10000">
+            <span class="hint">80C, 80D, home loan interest, HRA and so on. These do not apply in the new regime.</span>
+          </div>
+          <div class="field">
+            <label for="age">Age group</label>
+            <select id="age">
+              <option value="0">Below 60</option>
+              <option value="1">60 to 79</option>
+              <option value="2">80 and above</option>
+            </select>
+            <span class="hint">Affects the old regime exemption limit only.</span>
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="best">₹0</div>
+            <div class="cap" id="bestcap">tax under the better regime</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span><strong>New regime</strong></span><span id="nt">₹0</span></div>
+            <div class="row"><span>Taxable income</span><span id="nti">₹0</span></div>
+            <div class="row"><span>Effective rate</span><span id="ner">0%</span></div>
+            <div class="row" style="border-top:1px solid var(--line);margin-top:8px;padding-top:14px"><span><strong>Old regime</strong></span><span id="ot">₹0</span></div>
+            <div class="row"><span>Taxable income</span><span id="oti">₹0</span></div>
+            <div class="row"><span>Effective rate</span><span id="oer">0%</span></div>
+            <div class="row" style="border-top:1px solid var(--line);margin-top:8px;padding-top:14px"><span><strong>You save</strong></span><span id="sav">₹0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>The two regimes, and why there are two</h2>
+      <p>India runs a choice. The new regime has wider slabs and lower rates but almost no deductions. The old regime has narrower slabs and higher rates but lets you subtract a long list of things first. The new regime is the default, so if you do nothing, that is what applies to you.</p>
+
+      <h3>New regime slabs, FY 2026-27</h3>
+      <table>
+        <tr><th>Taxable income</th><th>Rate</th></tr>
+        <tr><td>Up to ₹4,00,000</td><td>Nil</td></tr>
+        <tr><td>₹4,00,001 to ₹8,00,000</td><td>5%</td></tr>
+        <tr><td>₹8,00,001 to ₹12,00,000</td><td>10%</td></tr>
+        <tr><td>₹12,00,001 to ₹16,00,000</td><td>15%</td></tr>
+        <tr><td>₹16,00,001 to ₹20,00,000</td><td>20%</td></tr>
+        <tr><td>₹20,00,001 to ₹24,00,000</td><td>25%</td></tr>
+        <tr><td>Above ₹24,00,000</td><td>30%</td></tr>
+      </table>
+      <p>Salaried people and pensioners get a standard deduction of ₹75,000. The section 87A rebate means a resident with taxable income up to ₹12,00,000 pays no tax at all, so a salaried person earning ₹12,75,000 gross pays nothing.</p>
+      <p>Budget 2026 made no change to these slabs, the standard deduction, the rebate, surcharge or cess. The structure introduced in Budget 2025 carries forward unchanged.</p>
+
+      <h3>Old regime slabs</h3>
+      <table>
+        <tr><th>Taxable income</th><th>Rate</th></tr>
+        <tr><td>Up to ₹2,50,000</td><td>Nil</td></tr>
+        <tr><td>₹2,50,001 to ₹5,00,000</td><td>5%</td></tr>
+        <tr><td>₹5,00,001 to ₹10,00,000</td><td>20%</td></tr>
+        <tr><td>Above ₹10,00,000</td><td>30%</td></tr>
+      </table>
+      <p>The exemption limit rises to ₹3,00,000 if you are 60 to 79 and ₹5,00,000 if you are 80 or above. Standard deduction is ₹50,000. The 87A rebate here covers taxable income up to ₹5,00,000.</p>
+      <p>Health and education cess of 4 percent is added on top of the tax in both regimes.</p>
+
+      <h2>Which one wins</h2>
+      <p>There is a break even point and it depends entirely on how much you can actually deduct. For most salaried people the new regime wins unless deductions are large. The old regime tends to win when you are already paying a big home loan, maxing section 80C, claiming real HRA on a city rent and paying meaningful health insurance premiums.</p>
+      <p>Rather than reason about it, put your real numbers in above. Enter your genuine deductions, not the ones you intend to make and never do. The calculator computes both and tells you the difference in rupees.</p>
+
+      <h3>What counts as an old regime deduction</h3>
+      <ul>
+        <li><strong>Section 80C</strong>, up to ₹1,50,000. EPF, PPF, ELSS, life insurance premium, principal on a home loan, children's tuition fees.</li>
+        <li><strong>Section 80D</strong>, health insurance premiums for yourself and for parents, with a higher limit where the insured is a senior citizen.</li>
+        <li><strong>Section 24(b)</strong>, interest on a home loan for a self occupied property, up to ₹2,00,000.</li>
+        <li><strong>HRA</strong>, calculated on the least of three amounts, which depends on your actual rent and city.</li>
+        <li><strong>Section 80CCD(1B)</strong>, an additional ₹50,000 for NPS on top of 80C.</li>
+      </ul>
+      <p>Add your realistic total into the deductions field. If you are not sure, run it twice, once optimistically and once conservatively, and see whether the answer changes.</p>
+
+      <h3>What this calculator does not cover</h3>
+      <p>It handles salary and business income taxed at slab rates. It does not handle capital gains, which are taxed under their own rules and rates, and it does not model marginal relief on surcharge at the very top of the income range. It also assumes you are a resident individual. If you have significant capital gains, foreign income, or a complicated position, use this for a rough view and take the actual filing to a chartered accountant.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Which regime should I pick?</summary>
+          <div><p>Whichever costs less, which the calculator above tells you in rupees. As a rough guide, the new regime usually wins for people with few deductions, and the old regime usually wins once your total deductions get large, typically because of a home loan and a full 80C.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I switch between regimes?</summary>
+          <div><p>Salaried people without business income can choose afresh each year at the time of filing. If you have business or professional income the choice is far more restricted, and once you move out of the old regime you may not be able to return freely. Confirm your specific position before deciding.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is the standard deduction available in the new regime?</summary>
+          <div><p>Yes, ₹75,000 for salaried people and pensioners. In the old regime it is ₹50,000. It is applied automatically above when you select salaried.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Why does someone earning ₹12,75,000 pay no tax?</summary>
+          <div><p>The ₹75,000 standard deduction brings taxable income to ₹12,00,000, and the section 87A rebate wipes out the tax at that level. Earn a rupee more and marginal relief prevents the tax jumping abruptly, so the tax rises gradually rather than all at once.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does this include cess and surcharge?</summary>
+          <div><p>Yes. The 4 percent health and education cess is applied to both regimes, and surcharge is applied at the standard thresholds. Marginal relief on surcharge is not modelled, so figures at the very top of the range are approximate.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Are these rates definitely current?</summary>
+          <div><p>They are the FY 2026-27 rates, which Budget 2026 carried forward unchanged from Budget 2025. Tax rules do change, so before you file, confirm against the Income Tax Department's own site or your accountant. Nothing here is tax advice.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:30px">
+  <div class="wrap wrap-narrow">
+    <a href="/lifeos/" class="promo"><img src="/assets/lifeos/icon.png" alt="" width="52" height="52"><div><small>From the same maker · not an ad</small><strong>Want to see where the money goes all year?</strong><span class="t">Life OS keeps income, expenses, bills and reminders on your phone, not in someone's cloud. In testing now.</span></div><span class="go">See Life OS &rarr;</span></a>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/gst-calculator/" class="card tool-card">
+          <h3>GST Calculator</h3>
+          <p>Add or remove GST and split CGST and SGST.</p>
+        </a>
+        <a href="/tools/ppf-calculator/" class="card tool-card">
+          <h3>PPF Calculator</h3>
+          <p>A tax free option that counts under 80C.</p>
+        </a>
+        <a href="/tools/emi-calculator/" class="card tool-card">
+          <h3>EMI Calculator</h3>
+          <p>Home loan interest feeds the old regime deduction.</p>
+        </a>
+        <a href="/tools/invoice-generator/" class="card tool-card">
+          <h3>Invoice Generator</h3>
+          <p>Raise a clean GST invoice.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function inr(n){if(!isFinite(n))return '0';return Math.round(n).toLocaleString('en-IN');}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+
+function slabTax(ti, slabs){
+  var t=0;
+  for(var k=0;k<slabs.length;k++){
+    var lo=slabs[k][0], hi=slabs[k][1], rate=slabs[k][2];
+    if(ti>lo){ t += (Math.min(ti,hi)-lo)*rate/100; }
+  }
+  return t;
+}
+function surcharge(tax, ti, isNew){
+  var r=0;
+  if(ti>20000000) r = isNew?25:(ti>50000000?37:25);
+  else if(ti>10000000) r=15;
+  else if(ti>5000000) r=10;
+  return tax*r/100;
+}
+function taxNew(gross, salaried){
+  var sd = salaried?75000:0;
+  var ti = Math.max(0, gross-sd);
+  var slabs=[[0,400000,0],[400000,800000,5],[800000,1200000,10],[1200000,1600000,15],
+             [1600000,2000000,20],[2000000,2400000,25],[2400000,1e12,30]];
+  var t=slabTax(ti,slabs);
+  if(ti<=1200000){ t=0; }
+  else { var mr = ti-1200000; if(t>mr) t=mr; }
+  var s=surcharge(t,ti,true);
+  return {tax:(t+s)*1.04, ti:ti};
+}
+function taxOld(gross, salaried, ded, age){
+  var sd = salaried?50000:0;
+  var ti = Math.max(0, gross-sd-ded);
+  var base = age==2?500000:(age==1?300000:250000);
+  var slabs=[[base,500000,5],[500000,1000000,20],[1000000,1e12,30]];
+  if(base>=500000) slabs=[[base,1000000,20],[1000000,1e12,30]];
+  var t=slabTax(ti,slabs);
+  if(ti<=500000) t=Math.max(0,t-12500);
+  var s=surcharge(t,ti,false);
+  return {tax:(t+s)*1.04, ti:ti};
+}
+function itax(){
+  var g=num('inc'), sal=document.getElementById('sal').value==='1',
+      d=num('ded'), age=parseInt(document.getElementById('age').value,10);
+  var N=taxNew(g,sal), O=taxOld(g,sal,d,age);
+  document.getElementById('nt').textContent='₹'+inr(N.tax);
+  document.getElementById('nti').textContent='₹'+inr(N.ti);
+  document.getElementById('ner').textContent=(g>0?(N.tax/g*100).toFixed(1):0)+'%';
+  document.getElementById('ot').textContent='₹'+inr(O.tax);
+  document.getElementById('oti').textContent='₹'+inr(O.ti);
+  document.getElementById('oer').textContent=(g>0?(O.tax/g*100).toFixed(1):0)+'%';
+  var best=Math.min(N.tax,O.tax);
+  document.getElementById('best').textContent='₹'+inr(best);
+  document.getElementById('bestcap').textContent = N.tax<=O.tax
+    ? 'payable under the new regime' : 'payable under the old regime';
+  document.getElementById('sav').textContent='₹'+inr(Math.abs(N.tax-O.tax))
+    +' with the '+(N.tax<=O.tax?'new':'old')+' regime';
+}
+['inc','sal','ded','age'].forEach(function(id){var e=document.getElementById(id);e.addEventListener('input',itax);e.addEventListener('change',itax);});
+itax();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

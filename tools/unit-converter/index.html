@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit Converter | Length, Weight, Temperature and Area</title>
+<meta name="description" content="Convert between metric and imperial units, including Indian units like lakh, crore, bigha and tola. Instant, works offline once loaded.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/unit-converter/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/unit-converter/">
+<meta property="og:title" content="Unit Converter">
+<meta property="og:description" content="Convert between metric and imperial units, including Indian units like lakh, crore, bigha and tola. Instant, works offline once loaded.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Unit Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/unit-converter/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many square feet is one bigha?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on where you are. In Gujarat and Rajasthan a pucca bigha is about 27,225 square feet. In West Bengal it is about 14,400. This converter uses the pucca figure. For any actual land transaction, take the number from the local revenue record."}},{"@type":"Question","name":"How many grams is a tola?","acceptedAnswer":{"@type":"Answer","text":"11.66 grams. Gold is now quoted per 10 grams in India, so a tola is about 16.6 percent more than a standard quote unit. On any real quantity that difference matters."}},{"@type":"Question","name":"Is one crore equal to one million?","acceptedAnswer":{"@type":"Answer","text":"No. One crore is ten million. One million is ten lakh. This is the most common conversion error when Indian figures are quoted internationally."}},{"@type":"Question","name":"Why can I not convert a temperature difference the same way?","acceptedAnswer":{"@type":"Answer","text":"Because the Celsius and Fahrenheit scales have different zero points. For a single temperature you apply the offset. For a difference between two temperatures you only apply the ratio, so 10 degrees Celsius of change equals 18 degrees Fahrenheit of change."}},{"@type":"Question","name":"Which units are exact and which are approximate?","acceptedAnswer":{"@type":"Answer","text":"Imperial to metric conversions for length and weight are exact by international definition. Traditional Indian land units such as bigha and guntha are approximations, because they were regional customs rather than defined standards."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Unit Converter</h1>
+    <p class="lead">Length, weight, temperature, area, volume and Indian number scale. Includes the units that actually come up here, such as bigha, guntha, tola and lakh.</p>
+    <div class="hero-meta">
+      <span>Six categories</span>
+      <span>Indian units included</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="field">
+        <label for="cat">Category</label>
+        <select id="cat">
+          <option value="length">Length</option>
+          <option value="weight">Weight</option>
+          <option value="temp">Temperature</option>
+          <option value="area">Area</option>
+          <option value="volume">Volume</option>
+          <option value="number">Indian number scale</option>
+        </select>
+      </div>
+      <div class="calc-grid">
+        <div>
+          <div class="field"><label for="from">From</label><select id="from"></select></div>
+          <div class="field"><label for="val">Value</label><input type="number" id="val" value="1" step="any"></div>
+        </div>
+        <div>
+          <div class="field"><label for="to">To</label><select id="to"></select></div>
+          <div class="result" style="margin-top:8px"><div class="big" id="out" style="font-size:1.75rem">0</div><div class="cap" id="unitlabel">-</div></div>
+        </div>
+      </div>
+      <div class="breakdown" id="common"></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>The Indian units, since most converters skip them</h2>
+      <p>If you are dealing with property or gold in India, the units that matter are not the ones a generic converter offers.</p>
+
+      <h3>Area, and the bigha problem</h3>
+      <p>Bigha is the one to be careful with. It is not a standardised unit. It varies by state and sometimes by district, and the difference is not small.</p>
+      <table>
+        <tr><th>Region</th><th>One bigha is roughly</th></tr>
+        <tr><td>Gujarat and Rajasthan (pucca)</td><td>2,529 square metres, about 0.625 acre</td></tr>
+        <tr><td>Uttar Pradesh (pucca)</td><td>2,529 square metres</td></tr>
+        <tr><td>West Bengal</td><td>1,337 square metres, about 0.33 acre</td></tr>
+        <tr><td>Bihar</td><td>1,254 to 2,529 square metres depending on district</td></tr>
+      </table>
+      <p>This converter uses the pucca bigha of about 2,529 square metres, which is the Gujarat and Rajasthan figure. If you are transacting land, take the number from the local revenue record rather than from any converter, including this one. Bigha in a sale deed means whatever the local convention says it means.</p>
+      <p>Guntha, common in Gujarat and Maharashtra, is more stable at about 101 square metres, or 1,089 square feet. Gaj, the square yard, is the standard unit for plot sizes across much of north India and is exactly 9 square feet.</p>
+
+      <h3>Tola, for gold</h3>
+      <p>One tola is 11.66 grams. Gold in India is now quoted per 10 grams almost everywhere, which is close to but not the same as a tola. The gap is 1.66 grams, roughly 14 percent, which on any meaningful quantity of gold is a lot of money. If an older document or a family record is in tolas, convert it properly rather than treating it as 10 grams.</p>
+
+      <h3>Lakh and crore</h3>
+      <p>The Indian number system groups differently from the international one, which is why ₹1,00,00,000 has commas where a Western reader would not expect them.</p>
+      <ul>
+        <li>1 lakh is 100,000, so 0.1 million</li>
+        <li>1 crore is 10,000,000, so 10 million</li>
+        <li>100 crore is 1 billion</li>
+        <li>1 arab is 1 billion</li>
+      </ul>
+      <p>The conversion people get wrong most often is crore to million. One crore is 10 million, not 1 million. If a figure quoted in crore looks implausibly small when converted, that is usually the error.</p>
+
+      <h2>Temperature is different</h2>
+      <p>Every other conversion here is a multiplication, because the scales share a zero point. Temperature scales do not, so they need an offset as well.</p>
+      <div class="formula">Celsius to Fahrenheit: (C × 9 ÷ 5) + 32<br>Fahrenheit to Celsius: (F − 32) × 5 ÷ 9<br>Celsius to Kelvin: C + 273.15</div>
+      <p>This is why you cannot convert a temperature <em>difference</em> the same way as a temperature. A rise of 10 degrees Celsius is a rise of 18 degrees Fahrenheit, not 50. For differences, use the ratio only and drop the offset.</p>
+
+      <h3>Precision</h3>
+      <p>The conversion factors used here are the exact defined values where one exists. An inch is exactly 0.0254 metres and a pound is exactly 0.45359237 kilograms, both by international definition rather than by measurement. Traditional Indian units are approximations by nature, because they were never defined that precisely.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>How many square feet is one bigha?</summary>
+          <div><p>It depends entirely on where you are. In Gujarat and Rajasthan a pucca bigha is about 27,225 square feet. In West Bengal it is about 14,400. This converter uses the pucca figure. For any actual land transaction, take the number from the local revenue record.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How many grams is a tola?</summary>
+          <div><p>11.66 grams. Gold is now quoted per 10 grams in India, so a tola is about 16.6 percent more than a standard quote unit. On any real quantity that difference matters.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is one crore equal to one million?</summary>
+          <div><p>No. One crore is ten million. One million is ten lakh. This is the most common conversion error when Indian figures are quoted internationally.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Why can I not convert a temperature difference the same way?</summary>
+          <div><p>Because the Celsius and Fahrenheit scales have different zero points. For a single temperature you apply the offset. For a difference between two temperatures you only apply the ratio, so 10 degrees Celsius of change equals 18 degrees Fahrenheit of change.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Which units are exact and which are approximate?</summary>
+          <div><p>Imperial to metric conversions for length and weight are exact by international definition. Traditional Indian land units such as bigha and guntha are approximations, because they were regional customs rather than defined standards.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/percentage-calculator/" class="card tool-card">
+          <h3>Percentage Calculator</h3>
+          <p>General percentage arithmetic.</p>
+        </a>
+        <a href="/tools/bmi-calculator/" class="card tool-card">
+          <h3>BMI Calculator</h3>
+          <p>Works in metric or imperial.</p>
+        </a>
+        <a href="/tools/date-calculator/" class="card tool-card">
+          <h3>Date Calculator</h3>
+          <p>Days between dates.</p>
+        </a>
+        <a href="/tools/age-calculator/" class="card tool-card">
+          <h3>Age Calculator</h3>
+          <p>Exact age in years, months and days.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+var U={
+ length:{base:'metre',u:{
+   'Millimetre':0.001,'Centimetre':0.01,'Metre':1,'Kilometre':1000,
+   'Inch':0.0254,'Foot':0.3048,'Yard':0.9144,'Mile':1609.344,'Nautical mile':1852}},
+ weight:{base:'kilogram',u:{
+   'Milligram':1e-6,'Gram':0.001,'Kilogram':1,'Tonne':1000,
+   'Ounce':0.028349523125,'Pound':0.45359237,'Stone':6.35029318,
+   'Tola':0.01166,'Quintal':100}},
+ area:{base:'square metre',u:{
+   'Square foot':0.09290304,'Square metre':1,'Square yard (gaj)':0.83612736,
+   'Acre':4046.8564224,'Hectare':10000,'Guntha':101.171,'Bigha (pucca)':2529.29,
+   'Cent':40.4686,'Square kilometre':1e6}},
+ volume:{base:'litre',u:{
+   'Millilitre':0.001,'Litre':1,'Cubic metre':1000,
+   'US gallon':3.785411784,'Imperial gallon':4.54609,'Cubic foot':28.316846592}},
+ number:{base:'unit',u:{
+   'One':1,'Thousand':1e3,'Lakh':1e5,'Crore':1e7,'Arab':1e9,
+   'Million':1e6,'Billion':1e9,'Trillion':1e12}}
+};
+var TEMP=['Celsius','Fahrenheit','Kelvin'];
+function fill(){
+  var c=el('cat').value, f=el('from'), t=el('to');
+  var names = c==='temp' ? TEMP : Object.keys(U[c].u);
+  f.innerHTML=''; t.innerHTML='';
+  names.forEach(function(n,i){
+    f.insertAdjacentHTML('beforeend','<option'+(i===0?' selected':'')+'>'+n+'</option>');
+    t.insertAdjacentHTML('beforeend','<option'+(i===1?' selected':'')+'>'+n+'</option>');
+  });
+  conv();
+}
+function toC(v,u){ return u==='Celsius'?v : u==='Fahrenheit'?(v-32)*5/9 : v-273.15; }
+function fromC(c,u){ return u==='Celsius'?c : u==='Fahrenheit'?c*9/5+32 : c+273.15; }
+function fmtn(x){
+  if(!isFinite(x)) return '0';
+  var a=Math.abs(x);
+  if(a!==0 && (a<0.0001||a>=1e15)) return x.toExponential(4);
+  var dp = a>=100?2 : a>=1?4 : 6;
+  return parseFloat(x.toFixed(dp)).toLocaleString('en-IN');
+}
+function conv(){
+  var c=el('cat').value, f=el('from').value, t=el('to').value, v=num('val'), r;
+  if(c==='temp'){ r=fromC(toC(v,f),t); }
+  else { r = v*U[c].u[f]/U[c].u[t]; }
+  el('out').textContent=fmtn(r);
+  el('unitlabel').textContent=t;
+  var names = c==='temp'?TEMP:Object.keys(U[c].u), h='';
+  names.forEach(function(n){
+    if(n===f) return;
+    var x = c==='temp' ? fromC(toC(v,f),n) : v*U[c].u[f]/U[c].u[n];
+    h+='<div class="row"><span>'+n+'</span><span>'+fmtn(x)+'</span></div>';
+  });
+  el('common').innerHTML=h;
+}
+el('cat').addEventListener('change',fill);
+on(['from','to','val'],conv);
+fill();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIP Calculator | Monthly Mutual Fund Investment Returns</title>
+<meta name="description" content="See what a monthly SIP grows to, how much of it is your own money and how much is return. Includes step up SIP. Free and instant.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/sip-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/sip-calculator/">
+<meta property="og:title" content="SIP Calculator">
+<meta property="og:description" content="See what a monthly SIP grows to, how much of it is your own money and how much is return. Includes step up SIP. Free and instant.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SIP Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/sip-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the return guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. A SIP is a way of investing, not a product with a fixed rate. The return you enter is your assumption. Market linked investments can and do fall, sometimes sharply. Treat the output as one scenario, not a forecast."}},{"@type":"Question","name":"SIP or lump sum?","acceptedAnswer":{"@type":"Answer","text":"Mathematically, if markets rise over your period, a lump sum invested at the start wins because more money is invested for longer. In practice most people do not have a lump sum, and a SIP removes the need to guess when to enter. It also means a falling market buys you more units, which helps when the market recovers."}},{"@type":"Question","name":"What happens if I miss a month?","acceptedAnswer":{"@type":"Answer","text":"Nothing serious. The instalment is not collected and your fund is worth slightly less at the end. There is no penalty from the fund house, though your bank may charge for a failed mandate. Repeated misses simply mean a smaller corpus."}},{"@type":"Question","name":"Can I stop a SIP whenever I want?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can pause or cancel with the fund house or your platform, usually with a few working days of notice. Money already invested stays invested until you redeem it separately. Some funds carry an exit load if you redeem within a short window, commonly a year."}},{"@type":"Question","name":"What is a step up SIP?","acceptedAnswer":{"@type":"Answer","text":"An instruction to increase your monthly amount by a set percentage each year, so your investing keeps pace with your income. Set the step up field above to see the difference. Over long periods it matters more than picking a slightly better fund."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>SIP Calculator</h1>
+    <p class="lead">A systematic investment plan puts a fixed amount into a mutual fund every month. This works out what that becomes, and separates the money you put in from the growth on top.</p>
+    <div class="hero-meta">
+      <span>Monthly compounding</span>
+      <span>Shows invested vs gained</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="m">Monthly investment (₹)</label>
+            <input type="number" id="m" value="10000" min="100" step="500">
+          </div>
+          <div class="field">
+            <label for="r">Expected return (% per year)</label>
+            <input type="number" id="r" value="12" min="0" max="40" step="0.5">
+          </div>
+          <div class="field">
+            <label for="y">Duration (years)</label>
+            <input type="number" id="y" value="15" min="1" max="50" step="1">
+          </div>
+          <div class="field">
+            <label for="s">Annual step up (%)</label>
+            <input type="number" id="s" value="0" min="0" max="50" step="1">
+            <span class="hint">Raise your instalment by this much each year. Leave at 0 for a flat SIP.</span>
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="fv">₹0</div>
+            <div class="cap">value at the end</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span>Total you invest</span><span id="ti">₹0</span></div>
+            <div class="row"><span>Total gain</span><span id="tg">₹0</span></div>
+            <div class="row"><span>Gain as share of value</span><span id="gs">0%</span></div>
+            <div class="row"><span>Number of instalments</span><span id="ni">0</span></div>
+            <div class="row"><span>Final monthly instalment</span><span id="fm">₹0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>How a SIP actually grows</h2>
+      <p>Each instalment you pay is invested for a different length of time. The one you paid in month one has the whole period to grow. The one you pay in the final month grows for a single month. The total is the sum of all of them, each compounded for its own remaining time.</p>
+      <div class="formula">FV = P × [ ((1 + i)<sup>n</sup> − 1) ÷ i ] × (1 + i)</div>
+      <p>P is your monthly amount, i is the monthly rate, which is the annual return divided by 12 and by 100, and n is the number of instalments. This calculator runs the month by month version, which handles the annual step up correctly.</p>
+
+      <h3>A worked example</h3>
+      <p>₹10,000 a month for 15 years at an assumed 12 percent. You put in ₹18,00,000 across 180 instalments. The projected value at the end is roughly ₹50,45,000. So about ₹32,45,000, which is 64 percent of the final figure, is growth rather than your own money.</p>
+      <p>Now look at where that growth sits in time. After 5 years the fund is worth about ₹8,25,000 against ₹6,00,000 invested. The gain is modest. Between year 10 and year 15 the value roughly doubles. Compounding does almost nothing in the early years and then does nearly everything, which is why stopping a SIP at year six because it felt slow is the most expensive common mistake.</p>
+
+      <h2>The step up</h2>
+      <p>Most people's income rises. Most people's SIP does not. Raising your instalment by 10 percent each year changes the outcome substantially. In the example above, adding a 10 percent annual step up takes the final value from about ₹50,45,000 to roughly ₹86,84,000, because you invest about ₹38,13,000 instead of ₹18,00,000 and the extra goes in early enough to compound.</p>
+      <p>Set the step up field to match your realistic annual raise and see what it does.</p>
+
+      <h3>What the return figure really means</h3>
+      <p>The 12 percent in the default is an assumption, not a promise. Indian equity funds have historically delivered somewhere in that region over long periods, but the path is nothing like a straight line. A fund averaging 12 percent over 15 years might fall 30 percent in one of those years. If a 30 percent fall would make you sell, the average return is irrelevant, because you will not be there to receive it.</p>
+      <p>Try running the calculator at 8 percent as well as 12. The gap between those two numbers over 20 years is the honest range of what might happen, and planning around the lower end is rarely regretted.</p>
+
+      <h3>Tax on the gains</h3>
+      <p>This calculator shows the value before tax. Equity mutual fund gains in India are taxed differently depending on how long you hold and the amounts involved, and the rules have changed more than once in recent years. Check the current position before you plan around a specific post tax figure.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Is the return guaranteed?</summary>
+          <div><p>No. A SIP is a way of investing, not a product with a fixed rate. The return you enter is your assumption. Market linked investments can and do fall, sometimes sharply. Treat the output as one scenario, not a forecast.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>SIP or lump sum?</summary>
+          <div><p>Mathematically, if markets rise over your period, a lump sum invested at the start wins because more money is invested for longer. In practice most people do not have a lump sum, and a SIP removes the need to guess when to enter. It also means a falling market buys you more units, which helps when the market recovers.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if I miss a month?</summary>
+          <div><p>Nothing serious. The instalment is not collected and your fund is worth slightly less at the end. There is no penalty from the fund house, though your bank may charge for a failed mandate. Repeated misses simply mean a smaller corpus.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I stop a SIP whenever I want?</summary>
+          <div><p>Yes. You can pause or cancel with the fund house or your platform, usually with a few working days of notice. Money already invested stays invested until you redeem it separately. Some funds carry an exit load if you redeem within a short window, commonly a year.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What is a step up SIP?</summary>
+          <div><p>An instruction to increase your monthly amount by a set percentage each year, so your investing keeps pace with your income. Set the step up field above to see the difference. Over long periods it matters more than picking a slightly better fund.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:30px">
+  <div class="wrap wrap-narrow">
+    <a href="/lifeos/" class="promo"><img src="/assets/lifeos/icon.png" alt="" width="52" height="52"><div><small>From the same maker · not an ad</small><strong>Putting money aside every month?</strong><span class="t">Life OS keeps income, expenses, bills and reminders on your phone, not in someone's cloud. In testing now.</span></div><span class="go">See Life OS &rarr;</span></a>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/emi-calculator/" class="card tool-card">
+          <h3>EMI Calculator</h3>
+          <p>Monthly instalment and total interest on a loan.</p>
+        </a>
+        <a href="/tools/fd-calculator/" class="card tool-card">
+          <h3>FD Calculator</h3>
+          <p>Guaranteed return, for comparison against a SIP.</p>
+        </a>
+        <a href="/tools/ppf-calculator/" class="card tool-card">
+          <h3>PPF Calculator</h3>
+          <p>Fifteen years of tax free provident fund growth.</p>
+        </a>
+        <a href="/tools/rd-calculator/" class="card tool-card">
+          <h3>RD Calculator</h3>
+          <p>Monthly deposits at a fixed bank rate.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function inr(n){if(!isFinite(n))return '0';return Math.round(n).toLocaleString('en-IN');}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+
+function sip(){
+  var M=num('m'), R=num('r'), Y=num('y'), S=num('s');
+  var i=R/12/100, months=Math.round(Y*12), bal=0, invested=0, cur=M;
+  for(var k=0;k<months;k++){
+    if(k>0 && k%12===0){ cur=cur*(1+S/100); }
+    bal=(bal+cur)*(1+i);
+    invested+=cur;
+  }
+  var gain=bal-invested;
+  document.getElementById('fv').textContent='₹'+inr(bal);
+  document.getElementById('ti').textContent='₹'+inr(invested);
+  document.getElementById('tg').textContent='₹'+inr(gain);
+  document.getElementById('gs').textContent=(bal>0?(gain/bal*100).toFixed(1):0)+'%';
+  document.getElementById('ni').textContent=months;
+  document.getElementById('fm').textContent='₹'+inr(cur);
+}
+['m','r','y','s'].forEach(function(id){document.getElementById(id).addEventListener('input',sip);});
+sip();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMI Calculator | Home, Car and Personal Loan EMI in Rupees</title>
+<meta name="description" content="Work out your monthly loan instalment, the total interest you will pay, and what happens when you change the tenure. Free, instant, nothing stored.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/emi-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/emi-calculator/">
+<meta property="og:title" content="EMI Calculator">
+<meta property="og:description" content="Work out your monthly loan instalment, the total interest you will pay, and what happens when you change the tenure. Free, instant, nothing stored.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"EMI Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/emi-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the EMI the same every month?","acceptedAnswer":{"@type":"Answer","text":"Yes, in a fixed rate loan the instalment does not change. What changes is the split inside it. In the first month of a 20 year home loan roughly 82 percent of your payment is interest. In the last year it is almost all principal."}},{"@type":"Question","name":"Does this calculator include processing fees?","acceptedAnswer":{"@type":"Answer","text":"No. It calculates the instalment on the loan amount you enter. Processing fees, documentation charges, legal fees and any insurance sold alongside the loan are separate, and they can add one to two percent of the loan value. Ask the lender for the total amount payable including all charges."}},{"@type":"Question","name":"What happens if I prepay part of the loan?","acceptedAnswer":{"@type":"Answer","text":"The outstanding principal drops, so the interest charged from that point on drops too. Your bank will normally ask whether you want to reduce the EMI or reduce the tenure. Reducing the tenure saves substantially more interest. Reducing the EMI gives you more monthly breathing room. There is no wrong answer, but know which one you are choosing."}},{"@type":"Question","name":"Are there penalties for prepaying?","acceptedAnswer":{"@type":"Answer","text":"For floating rate home loans taken by individuals, the Reserve Bank of India has barred lenders from charging foreclosure or prepayment penalties. Fixed rate loans and many personal and business loans can still carry a charge. Check your loan agreement before you prepay a large amount."}},{"@type":"Question","name":"Why does my bank's figure differ slightly from this?","acceptedAnswer":{"@type":"Answer","text":"Usually rounding, or the exact day count the bank uses. Differences of a few rupees are normal. A difference of hundreds usually means the rate or the tenure being used is not the one you entered, so check the sanction letter."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>EMI Calculator</h1>
+    <p class="lead">Enter the loan amount, the interest rate and the tenure. You get the monthly instalment and, more usefully, the total interest the loan will cost you over its life.</p>
+    <div class="hero-meta">
+      <span>Reducing balance method</span>
+      <span>Runs in your browser</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="p">Loan amount (₹)</label>
+            <input type="number" id="p" value="2500000" min="1000" step="10000">
+          </div>
+          <div class="field">
+            <label for="r">Interest rate (% per year)</label>
+            <input type="number" id="r" value="8.75" min="0.1" max="40" step="0.05">
+          </div>
+          <div class="field">
+            <label for="y">Tenure (years)</label>
+            <input type="number" id="y" value="20" min="1" max="35" step="1">
+          </div>
+          <div class="field">
+            <span class="hint">Change any value and the result updates instantly.</span>
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="emi">₹0</div>
+            <div class="cap">per month</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span>Principal</span><span id="op">₹0</span></div>
+            <div class="row"><span>Total interest</span><span id="oi">₹0</span></div>
+            <div class="row"><span>Total you repay</span><span id="ot">₹0</span></div>
+            <div class="row"><span>Interest as share of total</span><span id="os">0%</span></div>
+            <div class="row"><span>Number of instalments</span><span id="on">0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>How EMI is calculated</h2>
+      <p>Every bank in India uses the reducing balance method. Your instalment stays the same every month, but what it is made of changes. Early on, most of it is interest. Later, most of it is principal. The formula is this.</p>
+      <div class="formula">EMI = P × r × (1 + r)<sup>n</sup> ÷ [ (1 + r)<sup>n</sup> − 1 ]</div>
+      <p>P is the loan amount. The letter r is the monthly interest rate, which is your annual rate divided by 12 and then by 100. So 9 percent a year is 0.0075 a month. And n is the total number of monthly instalments, so a 20 year loan is 240.</p>
+
+      <h3>A worked example</h3>
+      <p>Borrow ₹25,00,000 at 8.75 percent for 20 years. The monthly rate is 0.0072917 and there are 240 instalments. Put those into the formula and the EMI comes to roughly ₹22,093.</p>
+      <p>Now the part that matters. Over 240 months you pay about ₹53,02,000 in total. Of that, ₹25,00,000 is the money you borrowed and roughly ₹28,02,000 is interest. You are paying back more than double what you took, and the interest is slightly larger than the loan itself.</p>
+
+      <h2>The tenure trap</h2>
+      <p>This is the single most useful thing to understand about a loan. A longer tenure lowers your EMI and raises your total cost, and the second effect is far larger than the first looks.</p>
+      <table>
+        <tr><th>Tenure</th><th>Monthly EMI</th><th>Total interest</th></tr>
+        <tr><td>10 years</td><td>about ₹31,332</td><td>about ₹12,59,800</td></tr>
+        <tr><td>15 years</td><td>about ₹24,986</td><td>about ₹19,97,500</td></tr>
+        <tr><td>20 years</td><td>about ₹22,093</td><td>about ₹28,02,000</td></tr>
+        <tr><td>25 years</td><td>about ₹20,554</td><td>about ₹36,66,100</td></tr>
+      </table>
+      <p>Going from 20 years to 25 saves you about ₹1,539 a month. It costs you about ₹8,63,800 in extra interest. That is the trade, stated plainly. Sales staff will show you the first column and rarely the third. Now you can see both.</p>
+
+      <h3>Three things worth doing</h3>
+      <ul>
+        <li><strong>Take the shortest tenure you can actually service.</strong> Not the shortest you can imagine servicing. If a missed EMI would sink you, the tenure is too short.</li>
+        <li><strong>Prepay early, not late.</strong> A prepayment in year three removes far more interest than the same amount in year fifteen, because in year three there is far more interest still to come.</li>
+        <li><strong>Compare the annual percentage rate, not the headline rate.</strong> Processing fees, insurance bundled into the loan and administrative charges all raise the real cost. Ask for the total amount payable, in writing.</li>
+      </ul>
+
+      <h3>Floating rates</h3>
+      <p>Most home loans in India are floating, tied to an external benchmark such as the repo rate. When the benchmark moves, your bank usually keeps the EMI the same and changes the tenure instead. That feels painless and is not. A rate rise handled this way can add years to your loan without your monthly payment changing at all. Ask your bank which of the two they adjust, and ask to see the revised amortisation schedule.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Is the EMI the same every month?</summary>
+          <div><p>Yes, in a fixed rate loan the instalment does not change. What changes is the split inside it. In the first month of a 20 year home loan roughly 82 percent of your payment is interest. In the last year it is almost all principal.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does this calculator include processing fees?</summary>
+          <div><p>No. It calculates the instalment on the loan amount you enter. Processing fees, documentation charges, legal fees and any insurance sold alongside the loan are separate, and they can add one to two percent of the loan value. Ask the lender for the total amount payable including all charges.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if I prepay part of the loan?</summary>
+          <div><p>The outstanding principal drops, so the interest charged from that point on drops too. Your bank will normally ask whether you want to reduce the EMI or reduce the tenure. Reducing the tenure saves substantially more interest. Reducing the EMI gives you more monthly breathing room. There is no wrong answer, but know which one you are choosing.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Are there penalties for prepaying?</summary>
+          <div><p>For floating rate home loans taken by individuals, the Reserve Bank of India has barred lenders from charging foreclosure or prepayment penalties. Fixed rate loans and many personal and business loans can still carry a charge. Check your loan agreement before you prepay a large amount.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Why does my bank's figure differ slightly from this?</summary>
+          <div><p>Usually rounding, or the exact day count the bank uses. Differences of a few rupees are normal. A difference of hundreds usually means the rate or the tenure being used is not the one you entered, so check the sanction letter.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:30px">
+  <div class="wrap wrap-narrow">
+    <a href="/lifeos/" class="promo"><img src="/assets/lifeos/icon.png" alt="" width="52" height="52"><div><small>From the same maker · not an ad</small><strong>Paying this EMI every month?</strong><span class="t">Life OS keeps income, expenses, bills and reminders on your phone, not in someone's cloud. In testing now.</span></div><span class="go">See Life OS &rarr;</span></a>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/loan-eligibility-calculator/" class="card tool-card">
+          <h3>Loan Eligibility</h3>
+          <p>How much a bank will actually lend you on your income.</p>
+        </a>
+        <a href="/tools/sip-calculator/" class="card tool-card">
+          <h3>SIP Calculator</h3>
+          <p>What a monthly investment grows into over time.</p>
+        </a>
+        <a href="/tools/fd-calculator/" class="card tool-card">
+          <h3>FD Calculator</h3>
+          <p>Fixed deposit maturity with quarterly compounding.</p>
+        </a>
+        <a href="/tools/income-tax-calculator/" class="card tool-card">
+          <h3>Income Tax</h3>
+          <p>Your tax under the new and old regimes.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function inr(n){if(!isFinite(n))return '0';return Math.round(n).toLocaleString('en-IN');}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+
+function emi(){
+  var P=num('p'), R=num('r'), Y=num('y');
+  var n=Math.round(Y*12), i=R/12/100, e;
+  if(P<=0||n<=0){document.getElementById('emi').textContent='₹0';return;}
+  if(i===0){ e=P/n; } else { var f=Math.pow(1+i,n); e=P*i*f/(f-1); }
+  var tot=e*n, interest=tot-P;
+  document.getElementById('emi').textContent='₹'+inr(e);
+  document.getElementById('op').textContent='₹'+inr(P);
+  document.getElementById('oi').textContent='₹'+inr(interest);
+  document.getElementById('ot').textContent='₹'+inr(tot);
+  document.getElementById('os').textContent=(tot>0?(interest/tot*100).toFixed(1):0)+'%';
+  document.getElementById('on').textContent=n;
+}
+['p','r','y'].forEach(function(id){document.getElementById(id).addEventListener('input',emi);});
+emi();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Counter | Words, Characters, Sentences and Reading Time</title>
+<meta name="description" content="Count words, characters with and without spaces, sentences, paragraphs and reading time as you type. Nothing is uploaded.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/word-counter/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/word-counter/">
+<meta property="og:title" content="Word Counter">
+<meta property="og:description" content="Count words, characters with and without spaces, sentences, paragraphs and reading time as you type. Nothing is uploaded.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Word Counter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/word-counter/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my text uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs inside your browser. The text never leaves your device, is not logged, and is gone when you close the tab. You can disconnect from the internet and the tool still works."}},{"@type":"Question","name":"How is a sentence counted?","acceptedAnswer":{"@type":"Answer","text":"By counting full stops, question marks and exclamation marks that end a run of text. Abbreviations such as Dr. or e.g. will be miscounted as sentence endings, so treat the figure as close rather than exact in text with many abbreviations."}},{"@type":"Question","name":"Why is your reading time longer than other tools give?","acceptedAnswer":{"@type":"Answer","text":"Because most tools assume 250 to 300 words a minute and the research on adult silent reading puts the average closer to 238. The lower figure produces estimates that match reality better, particularly for anything technical."}},{"@type":"Question","name":"Does it work with Hindi or Gujarati text?","acceptedAnswer":{"@type":"Answer","text":"Word and character counting work for any script, since they are based on whitespace and character position. The keyword frequency handles Devanagari as well as Latin. Reading time estimates are based on English research and will be less accurate for other languages."}},{"@type":"Question","name":"Is there a limit on how much text I can paste?","acceptedAnswer":{"@type":"Answer","text":"No hard limit. Very long documents, above roughly 100,000 words, may make live updating feel slow, since the count runs on every keystroke."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Word Counter</h1>
+    <p class="lead">Paste or type and the counts update live. Words, characters, sentences, paragraphs, reading time, and the keyword frequency that tells you which word you have leaned on too hard.</p>
+    <div class="hero-meta">
+      <span>Live as you type</span>
+      <span>Keyword frequency</span>
+      <span>Nothing uploaded</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="field">
+        <label for="txt">Your text</label>
+        <textarea id="txt" rows="11" placeholder="Type or paste here."></textarea>
+      </div>
+      <div class="grid grid-4" style="gap:14px">
+        <div class="result"><div class="big" id="w" style="font-size:1.7rem">0</div><div class="cap">words</div></div>
+        <div class="result"><div class="big" id="c" style="font-size:1.7rem">0</div><div class="cap">characters</div></div>
+        <div class="result"><div class="big" id="s" style="font-size:1.7rem">0</div><div class="cap">sentences</div></div>
+        <div class="result"><div class="big" id="rt" style="font-size:1.7rem">0s</div><div class="cap">reading time</div></div>
+      </div>
+      <div class="breakdown">
+        <div class="row"><span>Characters without spaces</span><span id="cns">0</span></div>
+        <div class="row"><span>Paragraphs</span><span id="p">0</span></div>
+        <div class="row"><span>Average words per sentence</span><span id="aw">0</span></div>
+        <div class="row"><span>Longest word</span><span id="lw">-</span></div>
+        <div class="row"><span>Speaking time (130 wpm)</span><span id="st">0s</span></div>
+        <div class="row"><span>Most used words</span><span id="kw">-</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>What counts as a word</h2>
+      <p>This tool splits on whitespace, which is the convention almost every word processor uses. So "state of the art" is four words and "state-of-the-art" is one. Numbers count as words. That matches what an editor or a client means when they ask for 800 words.</p>
+      <p>Character counts are given two ways. With spaces is what social platforms and SMS limits use. Without spaces is what most publications mean when they specify a character count, and what typesetters work from.</p>
+
+      <h3>Reading time</h3>
+      <p>Reading time here assumes 238 words per minute, which comes from a large meta analysis of silent reading in English by adults. That is meaningfully lower than the 250 or 300 many sites assume, and it produces estimates closer to how long people actually take.</p>
+      <p>Speaking time uses 130 words per minute, a comfortable presentation pace. Conversational speech runs faster, around 150, but people who read prepared material aloud at that speed sound rushed. If you are timing a talk, 130 is the safer planning figure.</p>
+
+      <h2>Lengths worth knowing</h2>
+      <table>
+        <tr><th>Where</th><th>Limit or convention</th></tr>
+        <tr><td>Post on X</td><td>280 characters on a standard account</td></tr>
+        <tr><td>SMS</td><td>160 characters for a single message</td></tr>
+        <tr><td>Meta title for search</td><td>roughly 55 to 60 characters before truncation</td></tr>
+        <tr><td>Meta description</td><td>roughly 150 to 160 characters</td></tr>
+        <tr><td>Email subject line</td><td>under 50 characters shows fully on most phones</td></tr>
+        <tr><td>Blog post that ranks</td><td>commonly 1,200 to 2,000 words, though depth beats length</td></tr>
+      </table>
+
+      <h3>The average sentence length figure</h3>
+      <p>This is the most useful number here and the one people ignore. Readable business writing tends to average 15 to 20 words per sentence. Above 25 and readers start losing the thread, particularly on a phone. Below 10 across a whole piece and it begins to feel choppy.</p>
+      <p>Aim for variation rather than a target. A long sentence followed by a short one reads well. Twelve long sentences in a row do not, regardless of what the average says.</p>
+
+      <h3>Most used words</h3>
+      <p>Common words such as the, and, of are filtered out, so what you see is the vocabulary you are actually leaning on. If one term appears far more than everything else, you have either found your subject or found a word you have repeated without noticing. Both are worth knowing before you publish.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Is my text uploaded anywhere?</summary>
+          <div><p>No. Everything runs inside your browser. The text never leaves your device, is not logged, and is gone when you close the tab. You can disconnect from the internet and the tool still works.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How is a sentence counted?</summary>
+          <div><p>By counting full stops, question marks and exclamation marks that end a run of text. Abbreviations such as Dr. or e.g. will be miscounted as sentence endings, so treat the figure as close rather than exact in text with many abbreviations.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Why is your reading time longer than other tools give?</summary>
+          <div><p>Because most tools assume 250 to 300 words a minute and the research on adult silent reading puts the average closer to 238. The lower figure produces estimates that match reality better, particularly for anything technical.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does it work with Hindi or Gujarati text?</summary>
+          <div><p>Word and character counting work for any script, since they are based on whitespace and character position. The keyword frequency handles Devanagari as well as Latin. Reading time estimates are based on English research and will be less accurate for other languages.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a limit on how much text I can paste?</summary>
+          <div><p>No hard limit. Very long documents, above roughly 100,000 words, may make live updating feel slow, since the count runs on every keystroke.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/case-converter/" class="card tool-card">
+          <h3>Case Converter</h3>
+          <p>Change text between sentence, title, upper and lower.</p>
+        </a>
+        <a href="/tools/typing-speed-test/" class="card tool-card">
+          <h3>Typing Speed Test</h3>
+          <p>Words per minute and accuracy.</p>
+        </a>
+        <a href="/tools/password-generator/" class="card tool-card">
+          <h3>Password Generator</h3>
+          <p>Strong passwords made on your device.</p>
+        </a>
+        <a href="/tools/percentage-calculator/" class="card tool-card">
+          <h3>Percentage Calculator</h3>
+          <p>General percentage arithmetic.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+var STOP={'the':1,'a':1,'an':1,'and':1,'or':1,'but':1,'of':1,'to':1,'in':1,'on':1,'at':1,'for':1,
+ 'is':1,'are':1,'was':1,'were':1,'be':1,'been':1,'it':1,'its':1,'this':1,'that':1,'with':1,
+ 'as':1,'by':1,'from':1,'you':1,'your':1,'i':1,'we':1,'they':1,'he':1,'she':1,'not':1,'have':1,'has':1};
+function fmt(sec){
+  sec=Math.round(sec);
+  if(sec<60) return sec+'s';
+  var m=Math.floor(sec/60), s=sec%60;
+  return m+'m '+(s<10?'0':'')+s+'s';
+}
+function count(){
+  var t=el('txt').value;
+  var words=t.trim()?t.trim().split(/\s+/):[];
+  var chars=t.length;
+  var cns=t.replace(/\s/g,'').length;
+  var sent=t.trim()?(t.match(/[^.!?]+[.!?]+/g)||[t]).length:0;
+  var paras=t.trim()?t.trim().split(/\n\s*\n/).filter(function(x){return x.trim();}).length:0;
+  el('w').textContent=words.length.toLocaleString('en-IN');
+  el('c').textContent=chars.toLocaleString('en-IN');
+  el('s').textContent=sent.toLocaleString('en-IN');
+  el('rt').textContent=fmt(words.length/238*60);
+  el('cns').textContent=cns.toLocaleString('en-IN');
+  el('p').textContent=paras;
+  el('aw').textContent=sent?(words.length/sent).toFixed(1):'0';
+  var longest='';
+  words.forEach(function(x){var c=x.replace(/[^A-Za-z\u0900-\u097F]/g,'');if(c.length>longest.length)longest=c;});
+  el('lw').textContent=longest||'-';
+  el('st').textContent=fmt(words.length/130*60);
+  var freq={};
+  words.forEach(function(x){
+    var k=x.toLowerCase().replace(/[^a-z\u0900-\u097F]/g,'');
+    if(k.length>2&&!STOP[k]) freq[k]=(freq[k]||0)+1;
+  });
+  var top=Object.keys(freq).sort(function(a,b){return freq[b]-freq[a];}).slice(0,4)
+    .map(function(k){return k+' ('+freq[k]+')';});
+  el('kw').textContent=top.length?top.join(', '):'-';
+}
+el('txt').addEventListener('input',count);
+count();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

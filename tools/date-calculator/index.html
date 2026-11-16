@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Date Calculator | Days Between Dates and Date Arithmetic</title>
+<meta name="description" content="Count the days between two dates, or add and subtract days, weeks, months and years from a date. Includes working day counts.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/date-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/date-calculator/">
+<meta property="og:title" content="Date Calculator">
+<meta property="og:description" content="Count the days between two dates, or add and subtract days, weeks, months and years from a date. Includes working day counts.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Date Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/date-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the count include both the start and end date?","acceptedAnswer":{"@type":"Answer","text":"No. It gives the gap between them, so 1 January to 31 January is 30 days. If your agreement counts both ends, add one. Read the exact wording before assuming which convention applies."}},{"@type":"Question","name":"Are public holidays excluded from the working day count?","acceptedAnswer":{"@type":"Answer","text":"No. It excludes Saturdays and Sundays only. Public holidays in India vary by state and change each year, so subtract the ones that apply to you."}},{"@type":"Question","name":"What happens when I add a month to 31 January?","acceptedAnswer":{"@type":"Answer","text":"This calculator rolls into early March, because 31 February does not exist. Some other systems clamp to 28 or 29 February instead. If a deadline is important, express it in days to avoid the ambiguity entirely."}},{"@type":"Question","name":"Can I count backwards?","acceptedAnswer":{"@type":"Answer","text":"Yes. Put the later date first and the gap will show as a negative number, with the working day count still correct. For the second tool, choose Subtract."}},{"@type":"Question","name":"Does it handle leap years?","acceptedAnswer":{"@type":"Answer","text":"Yes. It uses real calendar dates, so 29 February is counted whenever it falls inside the period."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Date Calculator</h1>
+    <p class="lead">Two jobs. Count the gap between two dates, or move a date forward or backward by a set amount. Both handle leap years and month lengths properly.</p>
+    <div class="hero-meta">
+      <span>Working day count</span>
+      <span>Add or subtract</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <h3 style="margin:0 0 16px">Days between two dates</h3>
+      <div class="calc-grid">
+        <div>
+          <div class="field"><label for="s1">From</label><input type="date" id="s1"></div>
+          <div class="field"><label for="s2">To</label><input type="date" id="s2"></div>
+        </div>
+        <div>
+          <div class="result"><div class="big" id="gap">0</div><div class="cap">days</div></div>
+          <div class="breakdown">
+            <div class="row"><span>Weeks and days</span><span id="wd">-</span></div>
+            <div class="row"><span>Months (approx)</span><span id="mo">0</span></div>
+            <div class="row"><span>Working days (Mon to Fri)</span><span id="bd">0</span></div>
+            <div class="row"><span>Weekend days</span><span id="we">0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc">
+      <h3 style="margin:0 0 16px">Add or subtract from a date</h3>
+      <div class="calc-grid">
+        <div>
+          <div class="field"><label for="b1">Start date</label><input type="date" id="b1"></div>
+          <div class="field"><label for="op">Operation</label>
+            <select id="op"><option value="1">Add</option><option value="-1">Subtract</option></select></div>
+          <div class="field"><label for="qty">Amount</label><input type="number" id="qty" value="90" step="1"></div>
+          <div class="field"><label for="unit">Unit</label>
+            <select id="unit"><option value="d">Days</option><option value="w">Weeks</option><option value="m">Months</option><option value="y">Years</option></select></div>
+        </div>
+        <div>
+          <div class="result"><div class="big" id="out" style="font-size:1.5rem">-</div><div class="cap" id="outday">-</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>Counting days is not subtraction</h2>
+      <p>Months have 28, 29, 30 or 31 days, and February changes length depending on the year. Any mental shortcut based on 30 day months drifts, and over a year it can be off by several days. This calculator walks the actual calendar.</p>
+      <p>One thing to be clear about: the count here is the gap <em>between</em> the dates, not the number of days inclusive of both ends. From 1 January to 31 January is 30 days by this measure. If your contract counts both the first and last day, add one. Whether a period is inclusive matters in notice periods and penalty clauses, and it is worth reading the exact wording rather than assuming.</p>
+
+      <h3>Working days</h3>
+      <p>The working day count treats Monday to Friday as working and excludes Saturdays and Sundays. It does not know about public holidays, which vary by state in India and change every year, and it does not know that many businesses here work Saturdays. Treat it as a starting figure and subtract the holidays that apply to you.</p>
+
+      <h2>Adding months is where software disagrees</h2>
+      <p>What is 31 January plus one month? There is no 31 February, so something has to give. Most systems, including this one, roll forward into March. Others clamp to the last day of February. Neither is wrong, but they produce different answers, which is why two systems can disagree about a due date by a day or three.</p>
+      <p>If a deadline matters, count in days rather than months. "Within 90 days" is unambiguous in a way that "within three months" is not.</p>
+
+      <h3>What people use this for</h3>
+      <ul>
+        <li><strong>Payment terms.</strong> Net 30 or net 45 from an invoice date, so you know when to chase.</li>
+        <li><strong>Notice periods.</strong> Working out the last working day from the date a resignation was submitted.</li>
+        <li><strong>Statutory deadlines.</strong> Many Indian filings are stated as a number of days from an event. Counting them by hand across month ends is where errors creep in.</li>
+        <li><strong>Project planning.</strong> Working days remaining to a delivery date, before holidays are deducted.</li>
+        <li><strong>Deposit maturity.</strong> The exact date a term deposit or a lock in period ends.</li>
+      </ul>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Does the count include both the start and end date?</summary>
+          <div><p>No. It gives the gap between them, so 1 January to 31 January is 30 days. If your agreement counts both ends, add one. Read the exact wording before assuming which convention applies.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Are public holidays excluded from the working day count?</summary>
+          <div><p>No. It excludes Saturdays and Sundays only. Public holidays in India vary by state and change each year, so subtract the ones that apply to you.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What happens when I add a month to 31 January?</summary>
+          <div><p>This calculator rolls into early March, because 31 February does not exist. Some other systems clamp to 28 or 29 February instead. If a deadline is important, express it in days to avoid the ambiguity entirely.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I count backwards?</summary>
+          <div><p>Yes. Put the later date first and the gap will show as a negative number, with the working day count still correct. For the second tool, choose Subtract.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does it handle leap years?</summary>
+          <div><p>Yes. It uses real calendar dates, so 29 February is counted whenever it falls inside the period.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/age-calculator/" class="card tool-card">
+          <h3>Age Calculator</h3>
+          <p>Exact age in years, months and days.</p>
+        </a>
+        <a href="/tools/percentage-calculator/" class="card tool-card">
+          <h3>Percentage Calculator</h3>
+          <p>General percentage arithmetic.</p>
+        </a>
+        <a href="/tools/invoice-generator/" class="card tool-card">
+          <h3>Invoice Generator</h3>
+          <p>Set payment terms on a real invoice.</p>
+        </a>
+        <a href="/tools/unit-converter/" class="card tool-card">
+          <h3>Unit Converter</h3>
+          <p>Length, weight, temperature and area.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+(function(){
+  var t=new Date(), iso=t.toISOString().slice(0,10);
+  el('s1').value=iso; el('b1').value=iso;
+  var l=new Date(t.getFullYear(),t.getMonth()+3,t.getDate());
+  el('s2').value=l.toISOString().slice(0,10);
+})();
+var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function gap(){
+  var a=new Date(el('s1').value), b=new Date(el('s2').value);
+  if(isNaN(a)||isNaN(b)){return;}
+  var d=Math.round((b-a)/86400000), ad=Math.abs(d);
+  el('gap').textContent=d.toLocaleString('en-IN');
+  el('wd').textContent=Math.floor(ad/7)+' weeks '+(ad%7)+' days';
+  el('mo').textContent=(ad/30.44).toFixed(1);
+  var lo=d<0?b:a, n=ad, biz=0;
+  for(var k=0;k<n;k++){
+    var c=new Date(lo.getTime()+k*86400000), g=c.getDay();
+    if(g!==0&&g!==6) biz++;
+  }
+  el('bd').textContent=biz.toLocaleString('en-IN');
+  el('we').textContent=(n-biz).toLocaleString('en-IN');
+}
+function shift(){
+  var a=new Date(el('b1').value); if(isNaN(a))return;
+  var sgn=parseInt(el('op').value,10), q=Math.round(num('qty'))*sgn, u=el('unit').value;
+  var r=new Date(a.getTime());
+  if(u==='d') r.setDate(r.getDate()+q);
+  else if(u==='w') r.setDate(r.getDate()+q*7);
+  else if(u==='m') r.setMonth(r.getMonth()+q);
+  else r.setFullYear(r.getFullYear()+q);
+  el('out').textContent=r.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  el('outday').textContent=DAYS[r.getDay()];
+}
+on(['s1','s2'],gap); on(['b1','op','qty','unit'],shift);
+gap(); shift();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free GST Invoice Generator | Make and Print an Invoice</title>
+<meta name="description" content="Create a clean GST invoice with every legally required field and save it as a PDF using your browser's print dialogue. Nothing uploaded, no sign up.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/invoice-generator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/invoice-generator/">
+<meta property="og:title" content="GST Invoice Generator">
+<meta property="og:description" content="Create a clean GST invoice with every legally required field and save it as a PDF using your browser's print dialogue. Nothing uploaded, no sign up.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GST Invoice Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/invoice-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this invoice legally valid in India?","acceptedAnswer":{"@type":"Answer","text":"The format includes every field the GST rules require, so a completed and signed copy is a compliant tax invoice. That said, validity also depends on the content being correct, including the rate, the HSN or SAC code and the place of supply. Those are your responsibility."}},{"@type":"Question","name":"How do I save it as a PDF?","acceptedAnswer":{"@type":"Answer","text":"Click print and choose Save as PDF as the destination rather than a printer. The stylesheet hides the form and the site navigation, so only the invoice itself appears."}},{"@type":"Question","name":"Is my invoice data stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything stays in your browser and nothing is transmitted. It also means the invoice is lost when you close the tab, so save the PDF first."}},{"@type":"Question","name":"What if I am not registered for GST?","acceptedAnswer":{"@type":"Answer","text":"Choose No GST as the tax type. The document then prints as a plain invoice rather than a tax invoice, with no tax lines, which is correct for an unregistered supplier. You must not charge GST if you are not registered."}},{"@type":"Question","name":"Can I put different GST rates on different lines?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each line has its own rate field and the totals group the tax by rate, which is how a multi rate invoice should be presented."}},{"@type":"Question","name":"Do I need to number invoices in a particular way?","acceptedAnswer":{"@type":"Answer","text":"The number must be consecutive, unique within the financial year, no more than 16 characters, and use only letters, numbers, hyphens and slashes. Do not skip numbers or reuse one from a cancelled invoice."}},{"@type":"Question","name":"Can I add my logo?","acceptedAnswer":{"@type":"Answer","text":"Not in this version. If you need a logo, save as PDF and add it in any PDF editor, or ask me about a version built for your business."}}]}
+</script>
+<style>
+.inv{background:#fff;border:1px solid var(--line);border-radius:12px;padding:34px;font-size:.9rem}
+.inv h2{font-family:var(--display);font-size:1.5rem;margin:0}
+.inv .top{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;margin-bottom:26px}
+.inv .parties{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:22px}
+.inv .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:5px}
+.inv table{width:100%;border-collapse:collapse;margin:0 0 18px;font-size:.86rem}
+.inv th,.inv td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left}
+.inv th{background:var(--bg-sunk);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+.inv td.n,.inv th.n{text-align:right}
+.inv .tot{margin-left:auto;width:min(300px,100%)}
+.inv .tot .row{display:flex;justify-content:space-between;padding:6px 0}
+.inv .tot .grand{border-top:2px solid var(--ink);margin-top:6px;padding-top:10px;font-weight:700;font-size:1.05rem}
+.lines{width:100%;border-collapse:collapse}
+.lines input{width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:.9rem;background:var(--bg)}
+.lines td{padding:4px}
+@media print{
+  body{background:#fff}
+  .nav,.foot,.ad,.section-sunk,.no-print,.crumb,.hero,.skip{display:none!important}
+  .inv{border:none;padding:0;border-radius:0}
+  .section{padding:0!important}
+  .wrap{max-width:none;padding:0}
+}
+@media(max-width:720px){.inv .parties{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>GST Invoice Generator</h1>
+    <p class="lead">Fill in the fields, check the preview, then print or save as PDF. It includes every field a valid GST invoice needs, which is more than most templates bother with.</p>
+    <div class="hero-meta">
+      <span>All required GST fields</span>
+      <span>Save as PDF</span>
+      <span>Nothing uploaded</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc no-print">
+      <h3 style="margin:0 0 18px">Your details</h3>
+      <div class="calc-grid">
+        <div>
+          <div class="field"><label for="bn">Business name</label><input type="text" id="bn" value="Your Business Name"></div>
+          <div class="field"><label for="ba">Address</label><textarea id="ba" rows="2">Street, City, State, PIN</textarea></div>
+          <div class="field"><label for="bg">Your GSTIN</label><input type="text" id="bg" placeholder="24ABCDE1234F1Z5"></div>
+          <div class="field"><label for="be">Email or phone</label><input type="text" id="be" value="hello@example.com"></div>
+        </div>
+        <div>
+          <div class="field"><label for="cn">Customer name</label><input type="text" id="cn" value="Customer Name"></div>
+          <div class="field"><label for="ca">Customer address</label><textarea id="ca" rows="2">Street, City, State, PIN</textarea></div>
+          <div class="field"><label for="cg">Customer GSTIN (optional)</label><input type="text" id="cg" placeholder="Leave blank for an unregistered buyer"></div>
+          <div class="field"><label for="pos">Place of supply</label><input type="text" id="pos" value="Gujarat"></div>
+        </div>
+      </div>
+
+      <h3 style="margin:26px 0 18px">Invoice details</h3>
+      <div class="calc-grid">
+        <div>
+          <div class="field"><label for="no">Invoice number</label><input type="text" id="no" value="INV-001"></div>
+          <div class="field"><label for="dt">Invoice date</label><input type="date" id="dt"></div>
+        </div>
+        <div>
+          <div class="field"><label for="due">Due date</label><input type="date" id="due"></div>
+          <div class="field"><label for="txtype">Tax type</label>
+            <select id="txtype">
+              <option value="intra">Within state (CGST + SGST)</option>
+              <option value="inter">Between states (IGST)</option>
+              <option value="none">No GST</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin:26px 0 14px">Line items</h3>
+      <table class="lines"><tbody id="rows"></tbody></table>
+      <div class="btn-row" style="margin-top:12px">
+        <button class="btn btn-ghost btn-sm" id="add">Add a line</button>
+      </div>
+
+      <div class="field" style="margin-top:22px"><label for="note">Notes or payment terms</label>
+        <textarea id="note" rows="2">Payment by bank transfer or UPI. Thank you.</textarea></div>
+
+      <div class="btn-row" style="margin-top:22px">
+        <button class="btn btn-primary" id="print">Print or save as PDF</button>
+      </div>
+    </div>
+
+    <div class="inv" id="doc">
+      <div class="top">
+        <div>
+          <h2 id="p_bn">Your Business Name</h2>
+          <div style="white-space:pre-line;color:var(--ink-soft);margin-top:6px" id="p_ba"></div>
+          <div style="color:var(--ink-soft)" id="p_be"></div>
+          <div style="margin-top:6px" id="p_bg"></div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-family:var(--display);font-size:1.25rem;font-weight:700" id="p_title">TAX INVOICE</div>
+          <div style="margin-top:8px"><span class="lbl">Invoice no</span><div id="p_no">INV-001</div></div>
+          <div style="margin-top:8px"><span class="lbl">Date</span><div id="p_dt"></div></div>
+          <div style="margin-top:8px"><span class="lbl">Due</span><div id="p_due"></div></div>
+        </div>
+      </div>
+      <div class="parties">
+        <div>
+          <div class="lbl">Billed to</div>
+          <div style="font-weight:600" id="p_cn"></div>
+          <div style="white-space:pre-line;color:var(--ink-soft)" id="p_ca"></div>
+          <div id="p_cg"></div>
+        </div>
+        <div>
+          <div class="lbl">Place of supply</div>
+          <div id="p_pos"></div>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>#</th><th>Description</th><th>HSN/SAC</th><th class="n">Qty</th><th class="n">Rate</th><th class="n">GST %</th><th class="n">Amount</th></tr></thead>
+        <tbody id="p_rows"></tbody>
+      </table>
+      <div class="tot">
+        <div class="row"><span>Taxable value</span><span id="p_sub">₹0</span></div>
+        <div id="p_taxrows"></div>
+        <div class="row grand"><span>Total</span><span id="p_tot">₹0</span></div>
+      </div>
+      <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink-soft);white-space:pre-line" id="p_note"></div>
+      <div style="margin-top:20px;font-size:.78rem;color:var(--ink-faint)" id="p_rc"></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>What a valid GST invoice must contain</h2>
+      <p>This is not a style question. If a required field is missing, your buyer's input tax credit can be challenged, and that turns your paperwork into their problem and then back into yours. The rules require the following.</p>
+      <ol>
+        <li>Name, address and GSTIN of the supplier</li>
+        <li>A consecutive serial number, unique within the financial year, using only letters, numbers, hyphens and slashes, up to 16 characters</li>
+        <li>Date of issue</li>
+        <li>Name, address and GSTIN of the recipient if they are registered</li>
+        <li>For an unregistered recipient where the value exceeds ₹50,000, their name, address and the delivery address</li>
+        <li>HSN code for goods, or SAC for services</li>
+        <li>Description, quantity and unit</li>
+        <li>Total value, taxable value after any discount, and the rate and amount of tax split into CGST, SGST, IGST and cess as applicable</li>
+        <li>Place of supply, with the state name</li>
+        <li>Whether the tax is payable on reverse charge</li>
+        <li>Signature or digital signature of the supplier or an authorised representative</li>
+      </ol>
+      <p>The form above covers all of these. Print it, sign it, and it is a compliant document.</p>
+
+      <h3>The serial number rule catches people</h3>
+      <p>The number has to be consecutive and unique within the financial year. Skipping numbers, restarting the sequence mid year, or issuing two invoices with the same number are all problems. A simple pattern such as INV-001 rising by one, restarting each April, is the safest approach. If you cancel an invoice, do not reuse its number.</p>
+
+      <h3>Place of supply decides which tax applies</h3>
+      <p>Within your own state you charge CGST and SGST, half the rate each. To another state you charge IGST at the full rate. The total tax is identical either way, but putting the wrong one on the invoice means your buyer cannot claim the credit cleanly.</p>
+      <p>For goods the place of supply is normally where they are delivered. For services it is usually the recipient's location if they are registered. There are specific rules for particular services, so check anything unusual rather than assuming.</p>
+
+      <h3>HSN and SAC codes</h3>
+      <p>HSN codes classify goods and SAC codes classify services. How many digits you must quote depends on your turnover, with larger businesses required to be more specific. Getting the code wrong can mean the wrong rate, which is your liability. Look yours up on the GST portal rather than guessing, and once you have it, reuse it consistently.</p>
+
+      <h2>Saving as a PDF</h2>
+      <p>Click print, then choose "Save as PDF" as the destination instead of a printer. Every current browser offers this. The page is styled so the form disappears and only the invoice prints, on clean white with no navigation or advertising.</p>
+      <p>Nothing is uploaded at any point. The invoice exists only in your browser until you print or save it, which also means closing the tab loses it. Save the PDF before you close.</p>
+
+      <h3>Practical habits worth having</h3>
+      <ul>
+        <li><strong>Put payment terms on the invoice,</strong> not just a due date. "Net 15" or "payable within 15 days" is harder to ignore than a date in a corner.</li>
+        <li><strong>Add a UPI QR code</strong> for small business customers. Removing friction from paying you genuinely speeds up collection. The <a href="/tools/qr-code-generator/">QR code generator</a> makes one.</li>
+        <li><strong>Keep every invoice you issue,</strong> including cancelled ones, for the retention period the law requires.</li>
+        <li><strong>Invoice the day you finish,</strong> not at month end. Payment clocks only start when the invoice arrives.</li>
+      </ul>
+      <p>One clear caveat. This tool produces a correctly formatted document. It does not file your returns, does not check whether the rate you entered is right for what you sold, and is not a substitute for an accountant. Rules change. Verify anything you are unsure of.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Is this invoice legally valid in India?</summary>
+          <div><p>The format includes every field the GST rules require, so a completed and signed copy is a compliant tax invoice. That said, validity also depends on the content being correct, including the rate, the HSN or SAC code and the place of supply. Those are your responsibility.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How do I save it as a PDF?</summary>
+          <div><p>Click print and choose Save as PDF as the destination rather than a printer. The stylesheet hides the form and the site navigation, so only the invoice itself appears.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is my invoice data stored anywhere?</summary>
+          <div><p>No. Everything stays in your browser and nothing is transmitted. It also means the invoice is lost when you close the tab, so save the PDF first.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What if I am not registered for GST?</summary>
+          <div><p>Choose No GST as the tax type. The document then prints as a plain invoice rather than a tax invoice, with no tax lines, which is correct for an unregistered supplier. You must not charge GST if you are not registered.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I put different GST rates on different lines?</summary>
+          <div><p>Yes. Each line has its own rate field and the totals group the tax by rate, which is how a multi rate invoice should be presented.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need to number invoices in a particular way?</summary>
+          <div><p>The number must be consecutive, unique within the financial year, no more than 16 characters, and use only letters, numbers, hyphens and slashes. Do not skip numbers or reuse one from a cancelled invoice.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I add my logo?</summary>
+          <div><p>Not in this version. If you need a logo, save as PDF and add it in any PDF editor, or ask me about a version built for your business.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:30px">
+  <div class="wrap wrap-narrow">
+    <a href="/lifeos/" class="promo"><img src="/assets/lifeos/icon.png" alt="" width="52" height="52"><div><small>From the same maker · not an ad</small><strong>Tracking who has paid you?</strong><span class="t">Life OS keeps income, expenses, bills and reminders on your phone, not in someone's cloud. In testing now.</span></div><span class="go">See Life OS &rarr;</span></a>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/gst-calculator/" class="card tool-card">
+          <h3>GST Calculator</h3>
+          <p>Check the tax on any amount.</p>
+        </a>
+        <a href="/tools/qr-code-generator/" class="card tool-card">
+          <h3>QR Code Generator</h3>
+          <p>Add a UPI payment code.</p>
+        </a>
+        <a href="/tools/date-calculator/" class="card tool-card">
+          <h3>Date Calculator</h3>
+          <p>Work out payment due dates.</p>
+        </a>
+        <a href="/tools/percentage-calculator/" class="card tool-card">
+          <h3>Percentage Calculator</h3>
+          <p>Discounts and margins.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+function inr(n){return '₹'+(Math.round(n*100)/100).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});}
+(function(){
+  var t=new Date(), d=new Date(t.getTime()+15*86400000);
+  el('dt').value=t.toISOString().slice(0,10);
+  el('due').value=d.toISOString().slice(0,10);
+})();
+function addRow(desc,hsn,qty,rate,gst){
+  var tr=document.createElement('tr');
+  tr.innerHTML='<td><input type="text" class="d" placeholder="Description" value="'+(desc||'')+'"></td>'
+    +'<td style="width:110px"><input type="text" class="h" placeholder="HSN" value="'+(hsn||'')+'"></td>'
+    +'<td style="width:76px"><input type="number" class="q" value="'+(qty||1)+'" min="0" step="any"></td>'
+    +'<td style="width:106px"><input type="number" class="r" value="'+(rate||0)+'" min="0" step="any"></td>'
+    +'<td style="width:82px"><input type="number" class="g" value="'+(gst===undefined?18:gst)+'" min="0" step="any"></td>'
+    +'<td style="width:34px"><button class="btn btn-ghost btn-sm x" title="Remove">&times;</button></td>';
+  el('rows').appendChild(tr);
+  tr.querySelectorAll('input').forEach(function(i){i.addEventListener('input',render);});
+  tr.querySelector('.x').addEventListener('click',function(){tr.remove();render();});
+  render();
+}
+function fmtDate(v){
+  if(!v) return '';
+  var d=new Date(v);
+  return d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+}
+function render(){
+  var mode=el('txtype').value;
+  el('p_bn').textContent=el('bn').value;
+  el('p_ba').textContent=el('ba').value;
+  el('p_be').textContent=el('be').value;
+  el('p_bg').textContent=el('bg').value?('GSTIN: '+el('bg').value):'';
+  el('p_no').textContent=el('no').value;
+  el('p_dt').textContent=fmtDate(el('dt').value);
+  el('p_due').textContent=fmtDate(el('due').value);
+  el('p_cn').textContent=el('cn').value;
+  el('p_ca').textContent=el('ca').value;
+  el('p_cg').textContent=el('cg').value?('GSTIN: '+el('cg').value):'';
+  el('p_pos').textContent=el('pos').value;
+  el('p_note').textContent=el('note').value;
+  el('p_title').textContent = mode==='none'?'INVOICE':'TAX INVOICE';
+
+  var sub=0, taxBy={}, html='', i=0;
+  el('rows').querySelectorAll('tr').forEach(function(tr){
+    var d=tr.querySelector('.d').value,
+        h=tr.querySelector('.h').value,
+        q=parseFloat(tr.querySelector('.q').value)||0,
+        r=parseFloat(tr.querySelector('.r').value)||0,
+        g=parseFloat(tr.querySelector('.g').value)||0;
+    if(!d && !r) return;
+    i++;
+    var amt=q*r; sub+=amt;
+    if(mode!=='none'){ taxBy[g]=(taxBy[g]||0)+amt*g/100; }
+    html+='<tr><td>'+i+'</td><td>'+d.replace(/</g,'&lt;')+'</td><td>'+h.replace(/</g,'&lt;')
+      +'</td><td class="n">'+q+'</td><td class="n">'+inr(r)+'</td><td class="n">'
+      +(mode==='none'?'-':g+'%')+'</td><td class="n">'+inr(amt)+'</td></tr>';
+  });
+  el('p_rows').innerHTML=html || '<tr><td colspan="7" style="color:var(--ink-faint)">Add a line item above.</td></tr>';
+  el('p_sub').textContent=inr(sub);
+
+  var totalTax=0, tr='';
+  Object.keys(taxBy).sort(function(a,b){return a-b;}).forEach(function(rate){
+    var t=taxBy[rate]; totalTax+=t;
+    if(mode==='intra'){
+      tr+='<div class="row"><span>CGST '+(rate/2)+'%</span><span>'+inr(t/2)+'</span></div>';
+      tr+='<div class="row"><span>SGST '+(rate/2)+'%</span><span>'+inr(t/2)+'</span></div>';
+    } else if(mode==='inter'){
+      tr+='<div class="row"><span>IGST '+rate+'%</span><span>'+inr(t)+'</span></div>';
+    }
+  });
+  el('p_taxrows').innerHTML=tr;
+  el('p_tot').textContent=inr(sub+totalTax);
+  el('p_rc').textContent = mode==='none'
+    ? '' : 'Amount of tax subject to reverse charge: Nil. This is a computer generated invoice.';
+}
+el('add').addEventListener('click',function(){addRow('', '', 1, 0, 18);});
+el('print').addEventListener('click',function(){window.print();});
+on(['bn','ba','bg','be','cn','ca','cg','pos','no','dt','due','txtype','note'],render);
+addRow('Website design and build','998314',1,15000,18);
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMI Calculator | Body Mass Index with Healthy Range</title>
+<meta name="description" content="Work out body mass index from height and weight, in metric or imperial, with standard categories and the separate thresholds used for South Asians.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/bmi-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/bmi-calculator/">
+<meta property="og:title" content="BMI Calculator">
+<meta property="og:description" content="Work out body mass index from height and weight, in metric or imperial, with standard categories and the separate thresholds used for South Asians.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"BMI Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/bmi-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why are the Asian thresholds lower?","acceptedAnswer":{"@type":"Answer","text":"Because studies have repeatedly found that South Asian populations show raised risk of type 2 diabetes and cardiovascular disease at lower BMI values than European populations, largely due to differences in where body fat is stored. Indian clinical guidance commonly uses 23 and 27.5 as action points rather than 25 and 30."}},{"@type":"Question","name":"I lift weights and my BMI says overweight. Is that right?","acceptedAnswer":{"@type":"Answer","text":"The number is right and the category is misleading. BMI cannot distinguish muscle from fat, and muscle is denser. If you train seriously, body fat percentage and waist measurement will tell you far more than BMI will."}},{"@type":"Question","name":"Should I use BMI for my child?","acceptedAnswer":{"@type":"Answer","text":"No, not with these categories. Children are assessed against age and sex specific percentile charts because healthy BMI changes throughout growth. Ask a paediatrician."}},{"@type":"Question","name":"What should I measure instead, or as well?","acceptedAnswer":{"@type":"Answer","text":"Waist circumference is the single most useful addition, because abdominal fat carries the most metabolic risk. Waist to height ratio is also widely used, with keeping your waist under half your height as a common rule of thumb. Blood pressure, fasting glucose and lipid profile tell you far more than any body measurement."}},{"@type":"Question","name":"Is a BMI in the healthy range enough on its own?","acceptedAnswer":{"@type":"Answer","text":"No. BMI says nothing about blood pressure, blood sugar, cholesterol, fitness or diet. It is one crude screening number. Do not read it as a health assessment in either direction."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>BMI Calculator</h1>
+    <p class="lead">Body mass index from your height and weight. It is a rough screening figure rather than a verdict on your health, and the section below explains exactly what it can and cannot tell you.</p>
+    <div class="hero-meta">
+      <span>Metric and imperial</span>
+      <span>Asian thresholds shown</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="sys">Units</label>
+            <select id="sys"><option value="m">Metric (cm and kg)</option><option value="i">Imperial (ft, in and lb)</option></select>
+          </div>
+          <div id="metric">
+            <div class="field"><label for="h">Height (cm)</label><input type="number" id="h" value="170" min="50" max="260" step="1"></div>
+            <div class="field"><label for="w">Weight (kg)</label><input type="number" id="w" value="68" min="10" max="400" step="0.5"></div>
+          </div>
+          <div id="imp" style="display:none">
+            <div class="field"><label for="ft">Height (feet)</label><input type="number" id="ft" value="5" min="1" max="8" step="1"></div>
+            <div class="field"><label for="inch">Height (inches)</label><input type="number" id="inch" value="7" min="0" max="11" step="1"></div>
+            <div class="field"><label for="lb">Weight (pounds)</label><input type="number" id="lb" value="150" min="20" max="900" step="1"></div>
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="bmi">0</div>
+            <div class="cap" id="cat">-</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span>Standard WHO category</span><span id="who">-</span></div>
+            <div class="row"><span>Asian threshold category</span><span id="asia">-</span></div>
+            <div class="row"><span>Healthy weight range for your height</span><span id="rng">-</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>What BMI is</h2>
+      <div class="formula">BMI = weight in kilograms ÷ (height in metres)<sup>2</sup></div>
+      <p>That is the whole thing. It was devised in the 1830s by a Belgian statistician studying populations, not patients, and it was never intended to assess an individual. It survives because it needs only two measurements that are easy to take accurately at scale.</p>
+
+      <h3>The standard categories</h3>
+      <table>
+        <tr><th>BMI</th><th>WHO category</th></tr>
+        <tr><td>Below 18.5</td><td>Underweight</td></tr>
+        <tr><td>18.5 to 24.9</td><td>Healthy weight</td></tr>
+        <tr><td>25.0 to 29.9</td><td>Overweight</td></tr>
+        <tr><td>30.0 and above</td><td>Obese</td></tr>
+      </table>
+
+      <h2>Why there is a second set of numbers for South Asians</h2>
+      <p>This matters if you are in India. Research has consistently found that people of South Asian descent tend to carry more body fat, and more of it around the abdomen, at any given BMI than European populations, and show raised risk of type 2 diabetes and cardiovascular disease at lower BMI values.</p>
+      <p>Because of this, the WHO has identified lower action points for Asian populations, and Indian clinical guidance commonly treats 23 rather than 25 as the point where risk starts rising, with 27.5 rather than 30 as the higher threshold. Both readings are shown above so you can see the difference.</p>
+      <p>The practical implication: a BMI of 24 reads as comfortably healthy on the standard scale and as already elevated on the Asian scale. If you are Indian, the second row is the more relevant one.</p>
+
+      <h2>What BMI cannot see</h2>
+      <p>It uses two numbers, so it is blind to everything else.</p>
+      <ul>
+        <li><strong>Muscle against fat.</strong> Muscle is denser. A trained athlete can register as overweight or obese while carrying very little fat.</li>
+        <li><strong>Where the fat sits.</strong> Fat around the abdomen carries considerably more metabolic risk than the same amount on hips and thighs. BMI cannot distinguish them. Waist circumference does, and is worth measuring alongside.</li>
+        <li><strong>Age and build.</strong> Body composition shifts with age at unchanged weight, and frame size varies between people of identical height.</li>
+        <li><strong>Anything about your actual health.</strong> Blood pressure, blood sugar, lipids and fitness all matter enormously and none of them appear in the formula.</li>
+      </ul>
+      <p>BMI is a screening signal, not a diagnosis. A reading outside the healthy band is a reason to have a conversation with a doctor, not a conclusion in itself. A reading inside it does not guarantee anything either.</p>
+
+      <h3>Children and pregnancy</h3>
+      <p>These categories apply to adults only. Children and teenagers are assessed against age and sex specific growth charts, because a healthy BMI changes substantially through development. BMI is also not a meaningful measure during pregnancy.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Why are the Asian thresholds lower?</summary>
+          <div><p>Because studies have repeatedly found that South Asian populations show raised risk of type 2 diabetes and cardiovascular disease at lower BMI values than European populations, largely due to differences in where body fat is stored. Indian clinical guidance commonly uses 23 and 27.5 as action points rather than 25 and 30.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>I lift weights and my BMI says overweight. Is that right?</summary>
+          <div><p>The number is right and the category is misleading. BMI cannot distinguish muscle from fat, and muscle is denser. If you train seriously, body fat percentage and waist measurement will tell you far more than BMI will.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Should I use BMI for my child?</summary>
+          <div><p>No, not with these categories. Children are assessed against age and sex specific percentile charts because healthy BMI changes throughout growth. Ask a paediatrician.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What should I measure instead, or as well?</summary>
+          <div><p>Waist circumference is the single most useful addition, because abdominal fat carries the most metabolic risk. Waist to height ratio is also widely used, with keeping your waist under half your height as a common rule of thumb. Blood pressure, fasting glucose and lipid profile tell you far more than any body measurement.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is a BMI in the healthy range enough on its own?</summary>
+          <div><p>No. BMI says nothing about blood pressure, blood sugar, cholesterol, fitness or diet. It is one crude screening number. Do not read it as a health assessment in either direction.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/age-calculator/" class="card tool-card">
+          <h3>Age Calculator</h3>
+          <p>Exact age in years, months and days.</p>
+        </a>
+        <a href="/tools/unit-converter/" class="card tool-card">
+          <h3>Unit Converter</h3>
+          <p>Convert between metric and imperial.</p>
+        </a>
+        <a href="/tools/percentage-calculator/" class="card tool-card">
+          <h3>Percentage Calculator</h3>
+          <p>General percentage arithmetic.</p>
+        </a>
+        <a href="/tools/date-calculator/" class="card tool-card">
+          <h3>Date Calculator</h3>
+          <p>Days between dates.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+function bmiCat(b){
+  if(b<18.5) return 'Underweight';
+  if(b<25) return 'Healthy weight';
+  if(b<30) return 'Overweight';
+  return 'Obese';
+}
+function asiaCat(b){
+  if(b<18.5) return 'Underweight';
+  if(b<23) return 'Healthy weight';
+  if(b<27.5) return 'Increased risk';
+  return 'High risk';
+}
+function bmi(){
+  var sys=el('sys').value, h, w;
+  el('metric').style.display = sys==='m'?'block':'none';
+  el('imp').style.display = sys==='m'?'none':'block';
+  if(sys==='m'){ h=num('h')/100; w=num('w'); }
+  else { h=(num('ft')*12+num('inch'))*0.0254; w=num('lb')*0.45359237; }
+  if(h<=0||w<=0){el('bmi').textContent='0';return;}
+  var b=w/(h*h);
+  el('bmi').textContent=b.toFixed(1);
+  el('cat').textContent=bmiCat(b);
+  el('who').textContent=bmiCat(b);
+  el('asia').textContent=asiaCat(b);
+  var lo=18.5*h*h, hi=24.9*h*h;
+  if(sys==='m') el('rng').textContent=lo.toFixed(1)+' to '+hi.toFixed(1)+' kg';
+  else el('rng').textContent=(lo/0.45359237).toFixed(0)+' to '+(hi/0.45359237).toFixed(0)+' lb';
+}
+on(['sys','h','w','ft','inch','lb'],bmi);
+bmi();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PPF Calculator | Public Provident Fund Maturity in 15 Years</title>
+<meta name="description" content="See what your Public Provident Fund is worth after 15 years, and what happens if you extend it. Annual compounding, tax free, free to use.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/ppf-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/ppf-calculator/">
+<meta property="og:title" content="PPF Calculator">
+<meta property="og:description" content="See what your Public Provident Fund is worth after 15 years, and what happens if you extend it. Annual compounding, tax free, free to use.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PPF Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/ppf-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is PPF interest really tax free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Interest accrues tax free and the maturity amount is tax free. The contribution also qualifies under section 80C if you use the old regime. This combination is rare and it is the main reason PPF holds up against higher yielding but taxable alternatives."}},{"@type":"Question","name":"What is the current PPF interest rate?","acceptedAnswer":{"@type":"Answer","text":"The rate is set by the government and reviewed every quarter, so it changes. Check the current notified rate and enter it above rather than relying on the default value."}},{"@type":"Question","name":"Can I withdraw before 15 years?","acceptedAnswer":{"@type":"Answer","text":"Partial withdrawal is permitted from the seventh year, capped at a proportion of the balance. Full premature closure is allowed only in limited situations such as serious illness or higher education, and it carries an interest penalty. Treat PPF as genuinely locked up."}},{"@type":"Question","name":"When should I make the deposit each year?","acceptedAnswer":{"@type":"Answer","text":"As early in the financial year as you can manage, and before the 5th of the month in any case. Interest is computed on the lowest balance between the 5th and the month end, so timing genuinely changes your return."}},{"@type":"Question","name":"Can I have more than one PPF account?","acceptedAnswer":{"@type":"Answer","text":"One in your own name. You may also operate one on behalf of a minor child, but the \u20b91,50,000 annual limit applies to the total across all of them, not to each separately."}},{"@type":"Question","name":"Is PPF better than ELSS?","acceptedAnswer":{"@type":"Answer","text":"They serve different purposes. PPF is a guaranteed, tax free return with a 15 year lock in. ELSS is market linked with a 3 year lock in, higher expected return and real risk of loss. Both qualify under 80C. Many people hold both, using PPF for the safe portion and ELSS for the growth portion."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>PPF Calculator</h1>
+    <p class="lead">The Public Provident Fund runs for 15 years, compounds annually and pays out entirely tax free. This shows what your yearly contribution becomes, and what extending the account does to that number.</p>
+    <div class="hero-meta">
+      <span>15 year term</span>
+      <span>Annual compounding</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="y">Yearly deposit (₹)</label>
+            <input type="number" id="y" value="150000" min="500" max="150000" step="5000">
+            <span class="hint">Minimum ₹500 a year, maximum ₹1,50,000.</span>
+          </div>
+          <div class="field">
+            <label for="r">Interest rate (% per year)</label>
+            <input type="number" id="r" value="7.1" min="1" max="15" step="0.1">
+            <span class="hint">Set by the government and revised each quarter.</span>
+          </div>
+          <div class="field">
+            <label for="n">Term (years)</label>
+            <input type="number" id="n" value="15" min="15" max="50" step="5">
+            <span class="hint">15 years, then extendable in blocks of 5.</span>
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="mv">₹0</div>
+            <div class="cap">tax free at maturity</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span>Total you deposit</span><span id="td">₹0</span></div>
+            <div class="row"><span>Interest earned</span><span id="ti">₹0</span></div>
+            <div class="row"><span>Interest as share of maturity</span><span id="sh">0%</span></div>
+            <div class="row"><span>Tax payable on maturity</span><span>₹0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>Why PPF is unusual</h2>
+      <p>PPF sits in what tax people call the exempt exempt exempt category. Your deposit qualifies for a deduction under section 80C in the old regime, the interest accrues without being taxed, and the maturity amount is tax free when you withdraw it. Very few things in India work that way.</p>
+      <p>That last point is what people undervalue. A fixed deposit at 7.1 percent returns roughly 4.97 percent after tax if you are in the 30 percent bracket. PPF at 7.1 percent returns 7.1 percent. To match it, a taxable investment would need to earn a little over 10 percent before tax.</p>
+
+      <h3>A worked example</h3>
+      <p>Deposit the full ₹1,50,000 every year for 15 years at 7.1 percent. You put in ₹22,50,000. The maturity value is roughly ₹40,68,000, so about ₹18,18,000 is interest, and you receive all of it without paying a rupee of tax.</p>
+
+      <h2>The extension, which is where it gets interesting</h2>
+      <p>At the end of 15 years you can extend in blocks of 5 years, either continuing to deposit or leaving the balance to keep earning. Because compounding is at its most powerful on a large balance, these later blocks do a great deal of work.</p>
+      <p>Continue the same ₹1,50,000 a year and the picture looks like this.</p>
+      <table>
+        <tr><th>Term</th><th>You deposit</th><th>Maturity value</th></tr>
+        <tr><td>15 years</td><td>₹22,50,000</td><td>about ₹40,68,000</td></tr>
+        <tr><td>20 years</td><td>₹30,00,000</td><td>about ₹66,58,000</td></tr>
+        <tr><td>25 years</td><td>₹37,50,000</td><td>about ₹1,03,08,000</td></tr>
+        <tr><td>30 years</td><td>₹45,00,000</td><td>about ₹1,54,50,000</td></tr>
+      </table>
+      <p>The last five years alone, from 25 to 30, add roughly ₹51,42,900 against ₹7,50,000 of deposits. Nothing changed except that the balance was already large. That is compounding doing what it does, and it is the reason people who open a PPF in their twenties and simply keep extending it end up with figures that look implausible.</p>
+
+      <h3>Rules worth knowing</h3>
+      <ul>
+        <li><strong>Deposit before the 5th of the month.</strong> Interest is calculated on the lowest balance between the 5th and the last day of each month. A deposit on the 6th earns nothing that month.</li>
+        <li><strong>Deposit early in the financial year.</strong> A lump sum in April earns a full year of interest. The same amount in March earns almost none.</li>
+        <li><strong>The ₹1,50,000 cap is across all your PPF accounts</strong> including any you hold for a minor.</li>
+        <li><strong>Partial withdrawal</strong> is allowed from the seventh year, subject to limits. Loans against the balance are available between the third and sixth year.</li>
+        <li><strong>Miss a year and the account goes dormant.</strong> Reviving it costs a small penalty plus the minimum deposit for each missed year.</li>
+      </ul>
+
+      <h3>The honest limitation</h3>
+      <p>Two things constrain PPF. The ₹1,50,000 annual cap means it cannot be your whole plan if you save more than that. And the rate is reset quarterly by the government, so today's 7.1 percent is not guaranteed for 15 years. It has been higher in the past and it may be lower in future. Enter a rate you consider realistic rather than assuming the current one holds forever.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Is PPF interest really tax free?</summary>
+          <div><p>Yes. Interest accrues tax free and the maturity amount is tax free. The contribution also qualifies under section 80C if you use the old regime. This combination is rare and it is the main reason PPF holds up against higher yielding but taxable alternatives.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What is the current PPF interest rate?</summary>
+          <div><p>The rate is set by the government and reviewed every quarter, so it changes. Check the current notified rate and enter it above rather than relying on the default value.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I withdraw before 15 years?</summary>
+          <div><p>Partial withdrawal is permitted from the seventh year, capped at a proportion of the balance. Full premature closure is allowed only in limited situations such as serious illness or higher education, and it carries an interest penalty. Treat PPF as genuinely locked up.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>When should I make the deposit each year?</summary>
+          <div><p>As early in the financial year as you can manage, and before the 5th of the month in any case. Interest is computed on the lowest balance between the 5th and the month end, so timing genuinely changes your return.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I have more than one PPF account?</summary>
+          <div><p>One in your own name. You may also operate one on behalf of a minor child, but the ₹1,50,000 annual limit applies to the total across all of them, not to each separately.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is PPF better than ELSS?</summary>
+          <div><p>They serve different purposes. PPF is a guaranteed, tax free return with a 15 year lock in. ELSS is market linked with a 3 year lock in, higher expected return and real risk of loss. Both qualify under 80C. Many people hold both, using PPF for the safe portion and ELSS for the growth portion.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:30px">
+  <div class="wrap wrap-narrow">
+    <a href="/lifeos/" class="promo"><img src="/assets/lifeos/icon.png" alt="" width="52" height="52"><div><small>From the same maker · not an ad</small><strong>Tracking your yearly deposits?</strong><span class="t">Life OS keeps income, expenses, bills and reminders on your phone, not in someone's cloud. In testing now.</span></div><span class="go">See Life OS &rarr;</span></a>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/sip-calculator/" class="card tool-card">
+          <h3>SIP Calculator</h3>
+          <p>The market linked comparison over the same horizon.</p>
+        </a>
+        <a href="/tools/fd-calculator/" class="card tool-card">
+          <h3>FD Calculator</h3>
+          <p>Guaranteed but taxable.</p>
+        </a>
+        <a href="/tools/income-tax-calculator/" class="card tool-card">
+          <h3>Income Tax</h3>
+          <p>See what your 80C deduction is worth.</p>
+        </a>
+        <a href="/tools/rd-calculator/" class="card tool-card">
+          <h3>RD Calculator</h3>
+          <p>Monthly deposits at a fixed bank rate.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function inr(n){if(!isFinite(n))return '0';return Math.round(n).toLocaleString('en-IN');}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+
+function ppf(){
+  var Y=num('y'), R=num('r'), N=Math.round(num('n'));
+  var bal=0, dep=0;
+  for(var k=0;k<N;k++){ bal=(bal+Y)*(1+R/100); dep+=Y; }
+  var interest=bal-dep;
+  document.getElementById('mv').textContent='₹'+inr(bal);
+  document.getElementById('td').textContent='₹'+inr(dep);
+  document.getElementById('ti').textContent='₹'+inr(interest);
+  document.getElementById('sh').textContent=(bal>0?(interest/bal*100).toFixed(1):0)+'%';
+}
+['y','r','n'].forEach(function(id){document.getElementById(id).addEventListener('input',ppf);});
+ppf();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

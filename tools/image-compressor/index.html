@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Compressor | Shrink Photos Without Uploading Them</title>
+<meta name="description" content="Compress and resize JPEG, PNG and WebP images entirely in your browser. The file never leaves your device. Free, no limits.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/image-compressor/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/image-compressor/">
+<meta property="og:title" content="Image Compressor">
+<meta property="og:description" content="Compress and resize JPEG, PNG and WebP images entirely in your browser. The file never leaves your device. Free, no limits.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Image Compressor","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/image-compressor/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my image uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Compression happens in your browser using the canvas element. The file never leaves your device. You can load the page, go offline, and it still works."}},{"@type":"Question","name":"What quality setting should I use?","acceptedAnswer":{"@type":"Answer","text":"Around 75 to 85 for web images, which is usually visually indistinguishable from the original at a fraction of the size. Go lower only when a hard file size limit forces you to."}},{"@type":"Question","name":"Why is resizing more effective than lowering quality?","acceptedAnswer":{"@type":"Answer","text":"Because file size scales with pixel count. Halving the width and height quarters the number of pixels before compression even starts. Most oversized images are oversized in dimensions, not in quality setting."}},{"@type":"Question","name":"Should I use WebP or JPEG?","acceptedAnswer":{"@type":"Answer","text":"WebP is typically 25 to 35 percent smaller at equivalent quality and is supported by all current browsers, so it is the better choice for a website. Use JPEG if the file has to work in older software or be opened by someone with an unpredictable setup."}},{"@type":"Question","name":"Does it remove the location data from my photo?","acceptedAnswer":{"@type":"Answer","text":"Yes. Re-encoding drops all EXIF metadata, including GPS coordinates, camera details and timestamp. That is usually desirable for privacy, but it means you cannot use this tool if you need that data kept."}},{"@type":"Question","name":"Can I compress several images at once?","acceptedAnswer":{"@type":"Answer","text":"Not currently. One at a time. The processing is fast enough that a handful is quick, but a hundred would be tedious."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>Image Compressor</h1>
+    <p class="lead">Drop in a photo and get a smaller one. The compression happens on your own device using the browser's image engine, so the file is never uploaded to anybody, including me.</p>
+    <div class="hero-meta">
+      <span>Never uploaded</span>
+      <span>Resize and convert</span>
+      <span>No file limit</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="field">
+        <label for="file">Choose an image</label>
+        <input type="file" id="file" accept="image/*">
+        <span class="hint">JPEG, PNG or WebP. Nothing is uploaded.</span>
+      </div>
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="q">Quality <span id="qv" style="color:var(--accent)">75</span>%</label>
+            <input type="range" id="q" min="20" max="100" value="75">
+          </div>
+          <div class="field">
+            <label for="mw">Maximum width (px)</label>
+            <input type="number" id="mw" value="1600" min="100" step="100">
+            <span class="hint">Images wider than this are scaled down. Aspect ratio is kept.</span>
+          </div>
+          <div class="field">
+            <label for="fmt">Output format</label>
+            <select id="fmt">
+              <option value="image/jpeg">JPEG, best for photos</option>
+              <option value="image/webp">WebP, smaller again</option>
+              <option value="image/png">PNG, keeps transparency</option>
+            </select>
+          </div>
+          <div class="btn-row" style="margin-top:4px">
+            <button class="btn btn-primary" id="dl" disabled>Download</button>
+          </div>
+        </div>
+        <div>
+          <div class="result"><div class="big" id="saved" style="font-size:1.9rem">-</div><div class="cap">smaller</div></div>
+          <div class="breakdown">
+            <div class="row"><span>Original size</span><span id="os">-</span></div>
+            <div class="row"><span>New size</span><span id="ns">-</span></div>
+            <div class="row"><span>Original dimensions</span><span id="od">-</span></div>
+            <div class="row"><span>New dimensions</span><span id="nd">-</span></div>
+          </div>
+          <div style="margin-top:14px;text-align:center">
+            <img id="prev" alt="Preview of your compressed image" style="max-width:100%;border-radius:10px;display:none">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>Why the file never leaves your device</h2>
+      <p>Most online image compressors upload your photo to a server, process it there and send it back. That means handing your image to a company you know nothing about, which is a poor idea for anything containing documents, people or business information.</p>
+      <p>This one uses the canvas element in your browser. The image is decoded, drawn at the new size and re-encoded entirely on your own machine. You could disconnect from the internet after the page loads and it would still work. Nothing is transmitted, nothing is stored, and I never see the file.</p>
+
+      <h2>The two things that shrink a file</h2>
+      <p><strong>Resizing</strong> removes pixels, and it is by far the bigger win. A modern phone photo is often 4000 pixels wide. Nothing on the web needs that. Scaling to 1600 pixels drops the pixel count by roughly 84 percent before any compression is applied.</p>
+      <p><strong>Quality</strong> controls how aggressively JPEG discards information the eye is unlikely to notice. Between 100 and about 75 the change is usually invisible while the file gets dramatically smaller. Below 60 you begin to see blocky patches around edges and in smooth gradients like skies.</p>
+      <p>Do both. Resize first, then compress. Most people only reduce quality, keep the full 4000 pixel width, and wonder why the file is still large.</p>
+
+      <h3>Which quality setting to use</h3>
+      <table>
+        <tr><th>Setting</th><th>Use it for</th></tr>
+        <tr><td>90 to 100</td><td>Print, or an image that will be edited again later</td></tr>
+        <tr><td>75 to 85</td><td>Website images and blog photos. The sensible default.</td></tr>
+        <tr><td>60 to 75</td><td>Thumbnails, email attachments, WhatsApp</td></tr>
+        <tr><td>Below 60</td><td>Only when a hard size limit forces it</td></tr>
+      </table>
+
+      <h2>Choosing a format</h2>
+      <ul>
+        <li><strong>JPEG</strong> for photographs. Decades of universal support and very efficient on continuous tone images. No transparency.</li>
+        <li><strong>WebP</strong> for the web today. Typically 25 to 35 percent smaller than JPEG at visually equivalent quality, supports transparency, and is supported by every current browser.</li>
+        <li><strong>PNG</strong> for logos, screenshots of text, diagrams and anything needing transparency. It is lossless, so it stays sharp but the files are much larger. Never use PNG for a photograph.</li>
+      </ul>
+      <p>Note that converting to JPEG flattens transparency onto a white background, because JPEG has no way to store it. If your image has transparent areas you need to keep, use WebP or PNG.</p>
+
+      <h3>The Indian form upload problem</h3>
+      <p>Plenty of government and examination portals impose limits like "photo must be under 50 KB" or "document between 20 KB and 200 KB", which is exactly what this tool is useful for. Set the maximum width to something modest, then lower the quality until the new size lands inside the range. Watch the new size figure as you drag.</p>
+      <p>Two practical warnings. Some portals also specify exact pixel dimensions, so read the instructions rather than only the file size. And compression is not reversible, so keep your original. Once detail is discarded, no tool brings it back.</p>
+
+      <h3>What compression removes besides pixels</h3>
+      <p>Re-encoding through canvas drops the image metadata, including EXIF data such as GPS coordinates, camera model and timestamp. For privacy that is a bonus, since holiday photos frequently carry the exact location they were taken. If you need that metadata preserved, this is the wrong tool.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Is my image uploaded to a server?</summary>
+          <div><p>No. Compression happens in your browser using the canvas element. The file never leaves your device. You can load the page, go offline, and it still works.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What quality setting should I use?</summary>
+          <div><p>Around 75 to 85 for web images, which is usually visually indistinguishable from the original at a fraction of the size. Go lower only when a hard file size limit forces you to.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Why is resizing more effective than lowering quality?</summary>
+          <div><p>Because file size scales with pixel count. Halving the width and height quarters the number of pixels before compression even starts. Most oversized images are oversized in dimensions, not in quality setting.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Should I use WebP or JPEG?</summary>
+          <div><p>WebP is typically 25 to 35 percent smaller at equivalent quality and is supported by all current browsers, so it is the better choice for a website. Use JPEG if the file has to work in older software or be opened by someone with an unpredictable setup.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does it remove the location data from my photo?</summary>
+          <div><p>Yes. Re-encoding drops all EXIF metadata, including GPS coordinates, camera details and timestamp. That is usually desirable for privacy, but it means you cannot use this tool if you need that data kept.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I compress several images at once?</summary>
+          <div><p>Not currently. One at a time. The processing is fast enough that a handful is quick, but a hundred would be tedious.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/qr-code-generator/" class="card tool-card">
+          <h3>QR Code Generator</h3>
+          <p>Make a QR code and download it.</p>
+        </a>
+        <a href="/tools/invoice-generator/" class="card tool-card">
+          <h3>Invoice Generator</h3>
+          <p>Add your logo to an invoice.</p>
+        </a>
+        <a href="/tools/unit-converter/" class="card tool-card">
+          <h3>Unit Converter</h3>
+          <p>Length, weight, area and more.</p>
+        </a>
+        <a href="/tools/word-counter/" class="card tool-card">
+          <h3>Word Counter</h3>
+          <p>Words, characters and reading time.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+function el(id){return document.getElementById(id);}
+function on(ids,fn){ids.forEach(function(i){var e=el(i);if(!e)return;e.addEventListener('input',fn);e.addEventListener('change',fn);});}
+
+var img=new Image(), origSize=0, blob=null, origName='image';
+function kb(b){ return b<1024*1024 ? (b/1024).toFixed(0)+' KB' : (b/1048576).toFixed(2)+' MB'; }
+el('file').addEventListener('change',function(e){
+  var f=e.target.files[0]; if(!f) return;
+  origSize=f.size; origName=f.name.replace(/\.[^.]+$/,'');
+  el('os').textContent=kb(f.size);
+  var r=new FileReader();
+  r.onload=function(){ img.src=r.result; };
+  r.readAsDataURL(f);
+});
+img.onload=function(){
+  el('od').textContent=img.naturalWidth+' x '+img.naturalHeight;
+  process();
+};
+function process(){
+  if(!img.src) return;
+  var maxW=Math.max(50,num('mw')), q=parseInt(el('q').value,10)/100, fmt=el('fmt').value;
+  var w=img.naturalWidth, h=img.naturalHeight;
+  if(w>maxW){ h=Math.round(h*maxW/w); w=maxW; }
+  var c=document.createElement('canvas'); c.width=w; c.height=h;
+  var x=c.getContext('2d');
+  x.imageSmoothingQuality='high';
+  if(fmt==='image/jpeg'){ x.fillStyle='#fff'; x.fillRect(0,0,w,h); }
+  x.drawImage(img,0,0,w,h);
+  c.toBlob(function(b){
+    if(!b) return;
+    blob=b;
+    el('ns').textContent=kb(b.size);
+    el('nd').textContent=w+' x '+h;
+    var pct = origSize? (1-b.size/origSize)*100 : 0;
+    el('saved').textContent=(pct>0?pct.toFixed(0):'0')+'%';
+    el('prev').src=URL.createObjectURL(b);
+    el('prev').style.display='block';
+    el('dl').disabled=false;
+  }, fmt, fmt==='image/png'?undefined:q);
+}
+el('q').addEventListener('input',function(){el('qv').textContent=el('q').value;process();});
+on(['mw','fmt'],process);
+el('dl').addEventListener('click',function(){
+  if(!blob) return;
+  var ext = el('fmt').value==='image/webp'?'webp':(el('fmt').value==='image/png'?'png':'jpg');
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=origName+'-compressed.'+ext;
+  a.click();
+});
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

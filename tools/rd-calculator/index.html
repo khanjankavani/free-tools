@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RD Calculator | Recurring Deposit Maturity Value</title>
+<meta name="description" content="Work out what a monthly recurring deposit is worth at maturity, with the quarterly compounding Indian banks use. Free and instant.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/rd-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/rd-calculator/">
+<meta property="og:title" content="RD Calculator">
+<meta property="og:description" content="Work out what a monthly recurring deposit is worth at maturity, with the quarterly compounding Indian banks use. Free and instant.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"RD Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/rd-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is my RD return lower than the rate suggests?","acceptedAnswer":{"@type":"Answer","text":"Because your money is not all invested for the whole term. The last instalment earns for one month. Averaged across the term, each rupee is invested for a little over half the period, so the return on your total deposits is roughly half what the same money in a fixed deposit would earn."}},{"@type":"Question","name":"Can I change the monthly amount later?","acceptedAnswer":{"@type":"Answer","text":"Generally no. The instalment is fixed when the account opens. If your surplus grows, most people open a second RD alongside the first rather than modifying it."}},{"@type":"Question","name":"What if I need the money before maturity?","acceptedAnswer":{"@type":"Answer","text":"Premature closure is allowed at most banks. You receive the rate applicable to the period actually completed, usually with a penalty of around 1 percent. Some banks require a minimum of three months before allowing closure at all."}},{"@type":"Question","name":"Is a post office RD different from a bank RD?","acceptedAnswer":{"@type":"Answer","text":"The mechanics are the same. The rate is set by the government and revised quarterly rather than by an individual bank, the standard term is five years, and the deposit carries a sovereign guarantee rather than DICGC insurance. Compare the current rates before choosing."}},{"@type":"Question","name":"Is RD interest tax free?","acceptedAnswer":{"@type":"Answer","text":"No. It is added to your income and taxed at your slab rate. There is no special exemption for recurring deposits."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>RD Calculator</h1>
+    <p class="lead">A recurring deposit takes a fixed amount from you every month at a rate agreed on day one. This shows what it is worth at the end and how much of that is interest.</p>
+    <div class="hero-meta">
+      <span>Quarterly compounding</span>
+      <span>Month by month accumulation</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="m">Monthly deposit (₹)</label>
+            <input type="number" id="m" value="10000" min="100" step="500">
+          </div>
+          <div class="field">
+            <label for="r">Interest rate (% per year)</label>
+            <input type="number" id="r" value="6.8" min="0.1" max="20" step="0.05">
+          </div>
+          <div class="field">
+            <label for="n">Term (months)</label>
+            <input type="number" id="n" value="60" min="6" max="120" step="1">
+            <span class="hint">Most banks offer 6 months to 10 years.</span>
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="mv">₹0</div>
+            <div class="cap">maturity amount</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span>Total deposited</span><span id="od">₹0</span></div>
+            <div class="row"><span>Interest earned</span><span id="oi">₹0</span></div>
+            <div class="row"><span>Interest as share of maturity</span><span id="os">0%</span></div>
+            <div class="row"><span>Number of instalments</span><span id="on">0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>How a recurring deposit works</h2>
+      <p>You commit to paying a fixed amount every month for a fixed term. The rate is locked when you open the account, so later rate changes do not affect you either way. Each instalment earns interest only for the time it has actually been in the account, compounded quarterly.</p>
+      <p>That last point is what people get wrong. Your first instalment earns for the whole term. Your final instalment earns for one month. So the effective return on the total amount you deposit is well below the headline rate, even though the rate itself is honest.</p>
+      <div class="formula">Maturity = Σ [ R × (1 + i ÷ 4)<sup>m ÷ 3</sup> ]  for each instalment, where m is the months it stays invested</div>
+
+      <h3>A worked example</h3>
+      <p>₹10,000 a month for 60 months at 6.8 percent. You deposit ₹6,00,000 in total. The maturity value comes to roughly ₹7,15,500, so the interest is about ₹1,15,500.</p>
+      <p>Compare that with putting ₹6,00,000 into a fixed deposit for 5 years at the same rate, which would earn roughly ₹2,40,000. The FD earns more than twice as much, and nothing is wrong with either calculation. In the FD the whole sum works for five years. In the RD the average rupee works for about two and a half. An RD is not a worse product, it is a product for people who do not have the lump sum in the first place.</p>
+
+      <h2>When an RD is the right choice</h2>
+      <p>An RD suits a known expense at a known date, when you have monthly surplus rather than savings. School fees due in eighteen months, a planned purchase in three years, building the deposit for something. You get a guaranteed amount on a guaranteed date, which is exactly what a market linked investment cannot give you.</p>
+      <p>It is a poor choice for long term wealth building. Over ten or fifteen years, an RD at around 7 percent taxed at your slab rate will struggle to stay ahead of inflation. For that horizon, look at a <a href="/tools/sip-calculator/">SIP</a> or <a href="/tools/ppf-calculator/">PPF</a> instead.</p>
+
+      <h3>Missing an instalment</h3>
+      <p>Banks charge a small penalty for a missed month, often ₹1 to ₹2 per ₹100 of the instalment. Miss several in a row and many banks can close the account early and pay you the applicable lower rate. Set up a standing instruction from the account your salary lands in.</p>
+
+      <h3>Tax</h3>
+      <p>RD interest is fully taxable at your slab rate, exactly like an FD, and TDS applies once you cross the annual threshold with that bank. Post office recurring deposits follow their own rate schedule set by the government, so check the current rate before assuming it matches a bank.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Why is my RD return lower than the rate suggests?</summary>
+          <div><p>Because your money is not all invested for the whole term. The last instalment earns for one month. Averaged across the term, each rupee is invested for a little over half the period, so the return on your total deposits is roughly half what the same money in a fixed deposit would earn.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I change the monthly amount later?</summary>
+          <div><p>Generally no. The instalment is fixed when the account opens. If your surplus grows, most people open a second RD alongside the first rather than modifying it.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What if I need the money before maturity?</summary>
+          <div><p>Premature closure is allowed at most banks. You receive the rate applicable to the period actually completed, usually with a penalty of around 1 percent. Some banks require a minimum of three months before allowing closure at all.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is a post office RD different from a bank RD?</summary>
+          <div><p>The mechanics are the same. The rate is set by the government and revised quarterly rather than by an individual bank, the standard term is five years, and the deposit carries a sovereign guarantee rather than DICGC insurance. Compare the current rates before choosing.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is RD interest tax free?</summary>
+          <div><p>No. It is added to your income and taxed at your slab rate. There is no special exemption for recurring deposits.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:30px">
+  <div class="wrap wrap-narrow">
+    <a href="/lifeos/" class="promo"><img src="/assets/lifeos/icon.png" alt="" width="52" height="52"><div><small>From the same maker · not an ad</small><strong>Saving a fixed amount every month?</strong><span class="t">Life OS keeps income, expenses, bills and reminders on your phone, not in someone's cloud. In testing now.</span></div><span class="go">See Life OS &rarr;</span></a>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/fd-calculator/" class="card tool-card">
+          <h3>FD Calculator</h3>
+          <p>One lump sum instead of monthly deposits.</p>
+        </a>
+        <a href="/tools/sip-calculator/" class="card tool-card">
+          <h3>SIP Calculator</h3>
+          <p>The market linked version of monthly investing.</p>
+        </a>
+        <a href="/tools/ppf-calculator/" class="card tool-card">
+          <h3>PPF Calculator</h3>
+          <p>Tax free, 15 year lock in.</p>
+        </a>
+        <a href="/tools/emi-calculator/" class="card tool-card">
+          <h3>EMI Calculator</h3>
+          <p>Monthly payments in the other direction.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function inr(n){if(!isFinite(n))return '0';return Math.round(n).toLocaleString('en-IN');}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+
+function rd(){
+  var M=num('m'), R=num('r'), N=Math.round(num('n'));
+  var total=0, deposited=0;
+  for(var k=1;k<=N;k++){
+    var monthsLeft=N-k+1;
+    total += M*Math.pow(1+R/400, monthsLeft/3);
+    deposited += M;
+  }
+  var interest=total-deposited;
+  document.getElementById('mv').textContent='₹'+inr(total);
+  document.getElementById('od').textContent='₹'+inr(deposited);
+  document.getElementById('oi').textContent='₹'+inr(interest);
+  document.getElementById('os').textContent=(total>0?(interest/total*100).toFixed(1):0)+'%';
+  document.getElementById('on').textContent=N;
+}
+['m','r','n'].forEach(function(id){document.getElementById(id).addEventListener('input',rd);});
+rd();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GST Calculator | Add or Remove GST, CGST and SGST Split</title>
+<meta name="description" content="Add GST to a price, strip GST out of an inclusive price, and see the CGST and SGST split. Covers the current 5, 18 and 40 percent slabs.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/gst-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/gst-calculator/">
+<meta property="og:title" content="GST Calculator">
+<meta property="og:description" content="Add GST to a price, strip GST out of an inclusive price, and see the CGST and SGST split. Covers the current 5, 18 and 40 percent slabs.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GST Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/gst-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I remove GST from a price that already includes it?","acceptedAnswer":{"@type":"Answer","text":"Divide by 1 plus the rate as a decimal. For 18 percent, divide by 1.18. For 5 percent, divide by 1.05. Do not multiply the inclusive price by the rate, which is the usual error and always overstates the tax."}},{"@type":"Question","name":"What are the current GST slabs?","acceptedAnswer":{"@type":"Answer","text":"Nil, 5 percent and 18 percent, plus a 40 percent rate for luxury and demerit goods. The 12 and 28 percent slabs were removed by the GST Council on 3 September 2025, with the change taking effect on 22 September 2025. Separate special rates apply to gold, silver and diamonds."}},{"@type":"Question","name":"Do 12 and 28 percent still exist?","acceptedAnswer":{"@type":"Answer","text":"Not for supplies made on or after 22 September 2025. Items that sat at 12 moved to 5, and most that sat at 28 moved to 18. The two rates remain in this calculator only so you can reconcile older invoices or raise a credit note against one."}},{"@type":"Question","name":"Is the total the same for CGST plus SGST as for IGST?","acceptedAnswer":{"@type":"Answer","text":"Yes. An 18 percent supply carries \u20b91,800 of tax on \u20b910,000 either way. Within a state that is \u20b9900 CGST and \u20b9900 SGST. Across states it is \u20b91,800 IGST. Only the split and the destination of the money differ."}},{"@type":"Question","name":"When do I need to register for GST?","acceptedAnswer":{"@type":"Answer","text":"Registration becomes mandatory once turnover crosses the threshold that applies to your state and to the type of supply you make, and it is compulsory from the first rupee for certain categories such as inter state supply of goods and most e-commerce sellers. The thresholds differ for goods and services and for special category states, so check your specific position rather than assuming a single number."}},{"@type":"Question","name":"What is the reverse charge mechanism?","acceptedAnswer":{"@type":"Answer","text":"For certain notified supplies the buyer pays the GST directly to the government instead of the seller collecting it. It applies to specific categories, including some purchases from unregistered suppliers. If you think it might apply to you, confirm it with your accountant, because getting it wrong creates a liability you did not budget for."}},{"@type":"Question","name":"Does this calculator handle GST cess?","acceptedAnswer":{"@type":"Answer","text":"No. Compensation cess applies to a narrow set of goods such as tobacco, aerated drinks and certain vehicles, at rates that vary by item. It sits on top of GST. If you deal in those categories, add the cess separately."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>GST Calculator</h1>
+    <p class="lead">Two jobs, one tool. Add GST to a base price, or work backwards from a price that already includes it. Both give you the CGST and SGST split you need for an invoice.</p>
+    <div class="hero-meta">
+      <span>Add and remove GST</span>
+      <span>CGST and SGST split</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="a">Amount (₹)</label>
+            <input type="number" id="a" value="10000" min="0" step="100">
+          </div>
+          <div class="field">
+            <label for="r">GST rate</label>
+            <select id="r">
+              <optgroup label="Current slabs">
+                <option value="0">0% (nil rated or exempt)</option>
+                <option value="5">5% (merit)</option>
+                <option value="18" selected>18% (standard)</option>
+                <option value="40">40% (demerit)</option>
+              </optgroup>
+              <optgroup label="Special rates">
+                <option value="0.25">0.25% (rough diamonds)</option>
+                <option value="1.5">1.5% (cut and polished diamonds)</option>
+                <option value="3">3% (gold, silver, jewellery)</option>
+              </optgroup>
+              <optgroup label="Withdrawn on 22 September 2025">
+                <option value="12">12% (old invoices)</option>
+                <option value="28">28% (old invoices)</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="field">
+            <label for="m">What is the amount above?</label>
+            <select id="m">
+              <option value="add">A base price, add GST to it</option>
+              <option value="rem">A final price, GST already included</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="t">Transaction type</label>
+            <select id="t">
+              <option value="intra">Within the same state (CGST + SGST)</option>
+              <option value="inter">Between states (IGST)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="tot">₹0</div>
+            <div class="cap">total including GST</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span>Taxable value</span><span id="base">₹0</span></div>
+            <div class="row"><span>Total GST</span><span id="gst">₹0</span></div>
+            <div class="row" id="r1"><span id="l1">CGST</span><span id="v1">₹0</span></div>
+            <div class="row" id="r2"><span id="l2">SGST</span><span id="v2">₹0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>Adding GST is easy. Removing it is where people slip.</h2>
+      <p>Adding is what everyone expects. Take the base price and multiply.</p>
+      <div class="formula">GST = base × rate ÷ 100<br>Total = base + GST</div>
+      <p>₹10,000 at 18 percent gives ₹1,800 of tax and a total of ₹11,800. Nothing surprising.</p>
+      <p>Removing it is where the common mistake lives. If a customer paid you ₹11,800 including 18 percent GST, the tax inside that is <strong>not</strong> 18 percent of ₹11,800. That would be ₹2,124, and it is wrong. You have to divide, not multiply.</p>
+      <div class="formula">Base = total ÷ (1 + rate ÷ 100)<br>GST = total − base</div>
+      <p>₹11,800 ÷ 1.18 = ₹10,000. So the GST inside is ₹1,800. The wrong method overstates the tax by ₹324 on a single ₹11,800 invoice. Repeat that across a year of sales and your return does not reconcile.</p>
+
+      <h2>CGST, SGST and IGST</h2>
+      <p>Which one you charge depends only on where the supply goes, not on what you are selling.</p>
+      <table>
+        <tr><th>Supply</th><th>What you charge</th><th>On ₹10,000 at 18%</th></tr>
+        <tr><td>Within your own state</td><td>CGST + SGST, half each</td><td>₹900 CGST and ₹900 SGST</td></tr>
+        <tr><td>To another state</td><td>IGST, the full rate</td><td>₹1,800 IGST</td></tr>
+      </table>
+      <p>The total tax is identical either way. Only the split changes, because CGST goes to the centre and SGST to the state where the supply happens. Get this wrong on an invoice and your buyer cannot claim the credit cleanly, which is the kind of error that gets you a phone call rather than a notice.</p>
+
+      <h3>The rate slabs, restructured in September 2025</h3>
+      <p>The GST Council met on 3 September 2025 and cut the four slab system down to two. The 12 and 28 percent slabs were removed, and everything in them moved to either 5 or 18 percent. A new 40 percent rate was created for luxury and demerit goods. The change took effect on 22 September 2025.</p>
+      <table>
+        <tr><th>Rate</th><th>What sits there</th></tr>
+        <tr><td>Nil</td><td>Exempt and zero rated supplies, including most unbranded staples and several everyday food items</td></tr>
+        <tr><td>5%</td><td>The merit rate. Essentials and most items that previously sat at 12</td></tr>
+        <tr><td>18%</td><td>The standard rate. Most services, and most goods that previously sat at 28</td></tr>
+        <tr><td>40%</td><td>Luxury and demerit goods such as pan masala, tobacco, aerated drinks, high end cars, yachts and private aircraft</td></tr>
+      </table>
+      <p>Three special rates sit outside the structure: 3 percent on gold, silver and jewellery, 1.5 percent on cut and polished diamonds, and 0.25 percent on rough diamonds.</p>
+      <p>The dropdown above still carries 12 and 28 percent, because you may be reconciling an invoice raised before 22 September 2025, or issuing a credit note against one. For anything you are raising today, those two rates no longer apply.</p>
+      <p>Rates and the classification of individual items are revised by the GST Council from time to time. Before you apply a rate to something unfamiliar, check the current notification or ask your accountant. Applying the wrong rate is your liability, not your customer's.</p>
+
+      <h3>Input tax credit, briefly</h3>
+      <p>If you are registered, the GST you pay on business purchases can usually be set off against the GST you collect on sales. You pay the government the difference. This only works if your supplier actually files their return and the invoice carries every required field, which is why a correctly formatted invoice matters more than it looks. The <a href="/tools/invoice-generator/">invoice generator</a> produces one with the fields in place.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>How do I remove GST from a price that already includes it?</summary>
+          <div><p>Divide by 1 plus the rate as a decimal. For 18 percent, divide by 1.18. For 5 percent, divide by 1.05. Do not multiply the inclusive price by the rate, which is the usual error and always overstates the tax.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What are the current GST slabs?</summary>
+          <div><p>Nil, 5 percent and 18 percent, plus a 40 percent rate for luxury and demerit goods. The 12 and 28 percent slabs were removed by the GST Council on 3 September 2025, with the change taking effect on 22 September 2025. Separate special rates apply to gold, silver and diamonds.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do 12 and 28 percent still exist?</summary>
+          <div><p>Not for supplies made on or after 22 September 2025. Items that sat at 12 moved to 5, and most that sat at 28 moved to 18. The two rates remain in this calculator only so you can reconcile older invoices or raise a credit note against one.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is the total the same for CGST plus SGST as for IGST?</summary>
+          <div><p>Yes. An 18 percent supply carries ₹1,800 of tax on ₹10,000 either way. Within a state that is ₹900 CGST and ₹900 SGST. Across states it is ₹1,800 IGST. Only the split and the destination of the money differ.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>When do I need to register for GST?</summary>
+          <div><p>Registration becomes mandatory once turnover crosses the threshold that applies to your state and to the type of supply you make, and it is compulsory from the first rupee for certain categories such as inter state supply of goods and most e-commerce sellers. The thresholds differ for goods and services and for special category states, so check your specific position rather than assuming a single number.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What is the reverse charge mechanism?</summary>
+          <div><p>For certain notified supplies the buyer pays the GST directly to the government instead of the seller collecting it. It applies to specific categories, including some purchases from unregistered suppliers. If you think it might apply to you, confirm it with your accountant, because getting it wrong creates a liability you did not budget for.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Does this calculator handle GST cess?</summary>
+          <div><p>No. Compensation cess applies to a narrow set of goods such as tobacco, aerated drinks and certain vehicles, at rates that vary by item. It sits on top of GST. If you deal in those categories, add the cess separately.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:30px">
+  <div class="wrap wrap-narrow">
+    <a href="/lifeos/" class="promo"><img src="/assets/lifeos/icon.png" alt="" width="52" height="52"><div><small>From the same maker · not an ad</small><strong>Running a small business's money?</strong><span class="t">Life OS keeps income, expenses, bills and reminders on your phone, not in someone's cloud. In testing now.</span></div><span class="go">See Life OS &rarr;</span></a>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/invoice-generator/" class="card tool-card">
+          <h3>Invoice Generator</h3>
+          <p>Make a GST invoice with every required field.</p>
+        </a>
+        <a href="/tools/income-tax-calculator/" class="card tool-card">
+          <h3>Income Tax</h3>
+          <p>Your personal tax under both regimes.</p>
+        </a>
+        <a href="/tools/percentage-calculator/" class="card tool-card">
+          <h3>Percentage Calculator</h3>
+          <p>General percentage arithmetic.</p>
+        </a>
+        <a href="/tools/emi-calculator/" class="card tool-card">
+          <h3>EMI Calculator</h3>
+          <p>Loan instalments and total interest.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function inr(n){if(!isFinite(n))return '0';return Math.round(n).toLocaleString('en-IN');}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+
+function gst(){
+  var A=num('a'), R=parseFloat(document.getElementById('r').value),
+      M=document.getElementById('m').value, T=document.getElementById('t').value;
+  var base, tax;
+  if(M==='add'){ base=A; tax=A*R/100; } else { base=A/(1+R/100); tax=A-base; }
+  var total=base+tax;
+  document.getElementById('tot').textContent='₹'+inr(total);
+  document.getElementById('base').textContent='₹'+inr(base);
+  document.getElementById('gst').textContent='₹'+inr(tax);
+  if(T==='intra'){
+    document.getElementById('l1').textContent='CGST ('+(R/2)+'%)';
+    document.getElementById('l2').textContent='SGST ('+(R/2)+'%)';
+    document.getElementById('v1').textContent='₹'+inr(tax/2);
+    document.getElementById('v2').textContent='₹'+inr(tax/2);
+    document.getElementById('r2').style.display='flex';
+  } else {
+    document.getElementById('l1').textContent='IGST ('+R+'%)';
+    document.getElementById('v1').textContent='₹'+inr(tax);
+    document.getElementById('r2').style.display='none';
+  }
+}
+['a','r','m','t'].forEach(function(id){var e=document.getElementById(id);e.addEventListener('input',gst);e.addEventListener('change',gst);});
+gst();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>

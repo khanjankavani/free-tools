@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FD Calculator | Fixed Deposit Maturity Amount and Interest</title>
+<meta name="description" content="Work out what a fixed deposit is worth at maturity with quarterly compounding, the way Indian banks actually calculate it. Free and instant.">
+<meta name="author" content="Khanjan Kavani">
+<link rel="canonical" href="https://khanjankavani.com/tools/fd-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khanjankavani.com/tools/fd-calculator/">
+<meta property="og:title" content="FD Calculator">
+<meta property="og:description" content="Work out what a fixed deposit is worth at maturity with quarterly compounding, the way Indian banks actually calculate it. Free and instant.">
+<meta property="og:site_name" content="Khanjan Kavani">
+<meta property="og:image" content="https://khanjankavani.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KhanjanKavani">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FD Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://khanjankavani.com/tools/fd-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Khanjan Kavani"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is FD interest compounded monthly?","acceptedAnswer":{"@type":"Answer","text":"Almost never. The Indian convention is quarterly compounding on cumulative deposits, and that is what this calculator uses. A few products compound annually. Payout deposits do not compound at all, because the interest leaves the deposit."}},{"@type":"Question","name":"Do senior citizens get a better rate?","acceptedAnswer":{"@type":"Answer","text":"Yes, most banks add roughly 0.25 to 0.75 percent for depositors over 60. Enter the higher rate directly and the calculator will use it."}},{"@type":"Question","name":"Is an FD better than a SIP?","acceptedAnswer":{"@type":"Answer","text":"They answer different questions. An FD gives a known return with essentially no risk to capital, which is what you want for money you will need within a few years. A SIP in equity offers a higher expected return over long periods with real volatility along the way. Money you need next year belongs in an FD. Money you will not touch for fifteen years usually does not."}},{"@type":"Question","name":"How is TDS calculated on my FD?","acceptedAnswer":{"@type":"Answer","text":"The bank deducts tax at source once your interest from that bank crosses the annual threshold, and issues Form 16A. That deduction is an advance against your total tax, not a settlement. You still declare the full interest at filing and pay any balance, or claim a refund if too much was withheld."}},{"@type":"Question","name":"Can I take a loan against my FD?","acceptedAnswer":{"@type":"Answer","text":"Usually yes, typically up to 90 percent of the deposit value, at a rate one to two percent above the FD rate. It is often cheaper than a personal loan and it avoids breaking the deposit and losing the higher long term rate."}}]}
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="brand" aria-label="Khanjan Kavani, home">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#1B1A18"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+      <span>Khanjan<span class="sub">.</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navBtn"><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/apps/">Apps</a>
+      <a href="/tech/">Tech</a>
+      <a href="/tools/" class="on">Tools</a>
+      <a href="/games/">Games</a>
+      <a href="/blog/">Writing</a>
+      <a href="/work/">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html" class="btn btn-primary btn-sm">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-sm">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a></nav>
+    <h1>FD Calculator</h1>
+    <p class="lead">Put in the deposit, the rate and the term. You get the maturity amount and the interest earned, calculated with quarterly compounding, which is what almost every Indian bank uses.</p>
+    <div class="hero-meta">
+      <span>Quarterly compounding</span>
+      <span>Cumulative and payout</span>
+      <span>Nothing stored</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap wrap-narrow">
+    <div class="calc">
+      <div class="calc-grid">
+        <div>
+          <div class="field">
+            <label for="p">Deposit amount (₹)</label>
+            <input type="number" id="p" value="500000" min="1000" step="10000">
+          </div>
+          <div class="field">
+            <label for="r">Interest rate (% per year)</label>
+            <input type="number" id="r" value="7.1" min="0.1" max="20" step="0.05">
+          </div>
+          <div class="field">
+            <label for="y">Term (years)</label>
+            <input type="number" id="y" value="5" min="0.25" max="20" step="0.25">
+          </div>
+          <div class="field">
+            <label for="t">Type</label>
+            <select id="t">
+              <option value="c">Cumulative, interest reinvested</option>
+              <option value="q">Quarterly payout</option>
+              <option value="m">Monthly payout</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="result">
+            <div class="big" id="mv">₹0</div>
+            <div class="cap" id="cap">maturity amount</div>
+          </div>
+          <div class="breakdown">
+            <div class="row"><span>Principal</span><span id="op">₹0</span></div>
+            <div class="row"><span>Interest earned</span><span id="oi">₹0</span></div>
+            <div class="row"><span>Effective annual yield</span><span id="oy">0%</span></div>
+            <div class="row" id="rowp" style="display:none"><span>Payout each period</span><span id="opay">₹0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap wrap-narrow">
+    <div class="prose">
+      <h2>How banks calculate an FD</h2>
+      <p>Indian banks compound fixed deposit interest quarterly on cumulative deposits. That means four times a year the interest earned is added to your balance, and the next quarter earns interest on the larger amount.</p>
+      <div class="formula">A = P × (1 + r ÷ 4)<sup>4t</sup></div>
+      <p>P is the deposit, r is the annual rate as a decimal, and t is the number of years. Quarterly compounding is why the amount you actually receive is a little more than a simple interest calculation suggests.</p>
+
+      <h3>A worked example</h3>
+      <p>Deposit ₹5,00,000 at 7.1 percent for 5 years, cumulative. Simple interest would give ₹1,77,500. Quarterly compounding gives roughly ₹2,10,900, so the maturity amount is about ₹7,10,900. The compounding is worth roughly ₹33,400 over the five years, and the effective annual yield works out to about 7.29 percent rather than the headline 7.1.</p>
+
+      <h2>Cumulative or payout</h2>
+      <p>A cumulative FD keeps the interest inside the deposit, so it compounds and you receive everything at maturity. A payout FD sends the interest to your account every month or quarter, so nothing compounds and you get a regular income instead.</p>
+      <p>On the same ₹5,00,000 at 7.1 percent for 5 years, cumulative earns about ₹2,10,900 and quarterly payout earns ₹1,77,500. The difference of roughly ₹33,400 is the price of receiving the money as you go. If you need the income, that is a fair price. If you do not, cumulative is simply better.</p>
+
+      <h3>Tax, which people forget</h3>
+      <p>FD interest is fully taxable as income from other sources, added to your total income and taxed at your slab rate. If you are in the 30 percent bracket, a 7.1 percent FD returns roughly 4.97 percent after tax, which may be close to or below inflation.</p>
+      <p>Banks also deduct TDS once interest across your deposits with that bank crosses the annual threshold. TDS is not the final tax. If your slab rate is higher you owe more at filing, and if your total income is below the taxable limit you can submit Form 15G, or 15H if you are a senior citizen, to stop the deduction.</p>
+
+      <h3>Breaking an FD early</h3>
+      <p>You can almost always withdraw early, but you are then paid the rate applicable to the period the money actually stayed, usually minus a penalty of around 0.5 to 1 percent. Break a 5 year deposit after 14 months and you receive roughly the 1 year rate less the penalty, not the 5 year rate. Splitting a large sum across several smaller deposits lets you break only the part you need.</p>
+
+      <h3>Deposit insurance</h3>
+      <p>Deposits with each bank are insured up to ₹5,00,000 per depositor by DICGC, covering principal and interest together across your savings and fixed deposits at that bank. If you hold substantially more than that, spreading it across banks is worth considering.</p>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Is FD interest compounded monthly?</summary>
+          <div><p>Almost never. The Indian convention is quarterly compounding on cumulative deposits, and that is what this calculator uses. A few products compound annually. Payout deposits do not compound at all, because the interest leaves the deposit.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do senior citizens get a better rate?</summary>
+          <div><p>Yes, most banks add roughly 0.25 to 0.75 percent for depositors over 60. Enter the higher rate directly and the calculator will use it.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is an FD better than a SIP?</summary>
+          <div><p>They answer different questions. An FD gives a known return with essentially no risk to capital, which is what you want for money you will need within a few years. A SIP in equity offers a higher expected return over long periods with real volatility along the way. Money you need next year belongs in an FD. Money you will not touch for fifteen years usually does not.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How is TDS calculated on my FD?</summary>
+          <div><p>The bank deducts tax at source once your interest from that bank crosses the annual threshold, and issues Form 16A. That deduction is an advance against your total tax, not a settlement. You still declare the full interest at filing and pay any balance, or claim a refund if too much was withheld.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I take a loan against my FD?</summary>
+          <div><p>Usually yes, typically up to 90 percent of the deposit value, at a rate one to two percent above the FD rate. It is often cheaper than a personal loan and it avoids breaking the deposit and losing the higher long term rate.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:30px">
+  <div class="wrap wrap-narrow">
+    <a href="/lifeos/" class="promo"><img src="/assets/lifeos/icon.png" alt="" width="52" height="52"><div><small>From the same maker · not an ad</small><strong>Keeping track of deposits and dates?</strong><span class="t">Life OS keeps income, expenses, bills and reminders on your phone, not in someone's cloud. In testing now.</span></div><span class="go">See Life OS &rarr;</span></a>
+  </div>
+</section>
+
+<section class="section section-sunk">
+  <div class="wrap">
+    <div class="sec-head"><h2>Related tools</h2></div>
+    <div class="grid grid-4">
+        <a href="/tools/rd-calculator/" class="card tool-card">
+          <h3>RD Calculator</h3>
+          <p>Monthly deposits instead of one lump sum.</p>
+        </a>
+        <a href="/tools/ppf-calculator/" class="card tool-card">
+          <h3>PPF Calculator</h3>
+          <p>Tax free alternative with a 15 year lock in.</p>
+        </a>
+        <a href="/tools/sip-calculator/" class="card tool-card">
+          <h3>SIP Calculator</h3>
+          <p>The market linked comparison.</p>
+        </a>
+        <a href="/tools/income-tax-calculator/" class="card tool-card">
+          <h3>Income Tax</h3>
+          <p>Work out the slab rate your interest is taxed at.</p>
+        </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function inr(n){if(!isFinite(n))return '0';return Math.round(n).toLocaleString('en-IN');}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)?v:0;}
+
+function fd(){
+  var P=num('p'), R=num('r'), Y=num('y'), T=document.getElementById('t').value;
+  var mv, interest, payout=0;
+  if(T==='c'){
+    var n=4*Y; mv=P*Math.pow(1+R/400,n); interest=mv-P;
+    document.getElementById('rowp').style.display='none';
+    document.getElementById('cap').textContent='maturity amount';
+  } else {
+    var per = (T==='q')?4:12;
+    payout = P*(R/100)/per;
+    interest = payout*per*Y; mv = P;
+    document.getElementById('rowp').style.display='flex';
+    document.getElementById('opay').textContent='₹'+inr(payout)+' per '+(T==='q'?'quarter':'month');
+    document.getElementById('cap').textContent='principal returned at maturity';
+  }
+  var yld = (Y>0 && P>0)? (Math.pow((P+interest)/P,1/Y)-1)*100 : 0;
+  document.getElementById('mv').textContent='₹'+inr(mv);
+  document.getElementById('op').textContent='₹'+inr(P);
+  document.getElementById('oi').textContent='₹'+inr(interest);
+  document.getElementById('oy').textContent=yld.toFixed(2)+'%';
+}
+['p','r','y','t'].forEach(function(id){var e=document.getElementById(id);e.addEventListener('input',fd);e.addEventListener('change',fd);});
+fd();
+</script>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="/" class="brand">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#2A2825"/><path d="M9.5 8.5v17" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round"/><path d="M23.5 8.5 14 17l9.5 8.5" stroke="#FBFAF7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="17" r="2.6" fill="#E5570B"/></svg>
+          <span>Khanjan Kavani</span>
+        </a>
+        <p>Architect turned app maker in Surat, Gujarat. Private apps and games, free tools, custom software for businesses, and writing on money and tax.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/apps/">Apps</a>
+        <a href="/tech/">Must-know tech</a>
+        <a href="/tools/">Free tools</a>
+        <a href="/games/">Arcade</a>
+        <a href="/work/">Client work</a>
+        <a href="/blog/">Writing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/how-i-build/">How I build</a>
+        <a href="/privacy-promise/">Privacy promise</a>
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/refunds.html">Refunds</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://x.com/KhanjanKavani" rel="me noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/khanjan.kavani/" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/khanjankavani/" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@khanjankavani.com">hello@khanjankavani.com</a>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; 2026 Khanjan Kavani. All rights reserved.</span>
+      <span>Tools are for information only, not professional advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navLinks');if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+</body>
+</html>
